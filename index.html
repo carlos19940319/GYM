@@ -22,6 +22,7 @@
   --glass: rgba(255,255,255,0.04);
   --radius:14px;
 }
+
 *{box-sizing:border-box;margin:0;padding:0;}
 body{
   font-family:Inter, sans-serif;
@@ -41,26 +42,26 @@ body::before{
   z-index:-1;
 }
 a{text-decoration:none;color:inherit;}
-.container{max-width:1100px;margin:auto;padding:28px;}
+.container{max-width:1100px;margin:auto;padding:14px;}
 
 /* HEADER STICKY */
 header{
   display:flex;
   align-items:center;
   justify-content: space-between;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   position:fixed;
   top:0;
   left:0;
   width:100%;
   z-index:1000;
-  background: linear-gradient(rgba(15,23,36,0.7), rgba(15,23,36,0.7)), 
+  background: linear-gradient(rgba(15,23,36,0.7), rgba(15,23,36,0.7)),
               url('IMG/TITULO.jpg') no-repeat center center;
   background-size: cover;
-  padding:14px 20px;
+  padding:8px 12px;
 }
 
-.brand{display:flex;gap:12px;align-items:center;}
+.brand{display:flex;gap:10px;align-items:center;}
 .logo{
   width:48px;
   height:48px;
@@ -76,31 +77,48 @@ header{
   object-fit:contain;
 }
 
-/* Navegación adaptativa sin scroll */
+/* NAV adaptativa sin scroll */
 nav{
-  display: flex;
+  display:flex;
   flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  width: 100%;
-  margin-left: 0;
-  padding: 4px 0;
+  gap:6px;
+  justify-content:center;
+  width:100%;
 }
 nav a{
-  white-space: normal;
-  text-align: center;
-  padding: 6px 10px;
-  font-weight: 600;
-  font-size: clamp(12px, 2vw, 16px);
-  flex: 1 1 auto;
-  min-width: 0;
+  flex:1 1 auto;
+  text-align:center;
+  padding:6px 4px;
+  font-weight:600;
+  font-size:clamp(12px,1.8vw,16px);
+  min-width:0;
+  word-break:break-word;
+  border:2px solid rgba(255,255,255,0.3); /* Contorno semi-transparente */
+  border-radius:8px;
+  backdrop-filter:blur(6px);
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  -webkit-tap-highlight-color: transparent; /* Quitar recuadro verdoso en móviles */
+  outline: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
-nav a:hover{color:white;}
+nav a:hover, nav a:focus{
+  transform: scale(1.08); /* Zoom profesional al pasar */
+  z-index:2;
+}
 nav a i{font-size:20px;transition:0.3s;}
 nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
 .mobile-toggle{ display:none; }
 
 /* BOTONES */
+.cta, button{
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor:pointer;
+}
+.cta:hover, .cta:focus, button:hover, button:focus{
+  transform: scale(1.08);
+  z-index:2;
+}
 .cta{
   background:linear-gradient(90deg,var(--accent),var(--accent-2));
   padding:10px 16px;
@@ -108,31 +126,27 @@ nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
   color:white;
   font-weight:700;
   border:none;
-  cursor:pointer;
-  transition: transform 0.3s;
 }
-.cta:hover{ transform:scale(1.05); }
-
-.btn-lg{padding:12px 18px;border-radius:12px;border:none;font-weight:800;cursor:pointer;}
+.btn-lg{padding:12px 18px;border-radius:12px;border:none;font-weight:800;}
 .btn-ghost{background:transparent;color:var(--accent-2);border:1px solid rgba(6,182,212,0.12);}
 
 /* HERO */
 .hero{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-  gap:28px;
+  grid-template-columns:1fr; 
+  gap:16px;
   align-items:start;
-  margin:32px 0;
+  margin:16px 0;
 }
-.hero-card{background:var(--glass);border-radius:var(--radius);padding:36px;backdrop-filter:blur(6px);}
-h1{font-size:clamp(28px,5vw,48px);margin-bottom:10px;}
-p.lead{color:var(--muted);margin-bottom:18px;font-size:clamp(14px,2vw,18px);}
+.hero-card{background:var(--glass);border-radius:var(--radius);padding:24px;backdrop-filter:blur(6px);}
+h1{font-size:clamp(24px,5vw,48px);margin-bottom:10px;}
+p.lead{color:var(--muted);margin-bottom:12px;font-size:clamp(14px,2vw,18px);}
 
 /* CARRUSEL */
-.carousel {
+.carousel{
   position: relative;
   width: 100%;
-  height: 500px;
+  height: clamp(250px,50vh,500px);
   overflow: hidden;
   border-radius: 20px;
 }
@@ -166,10 +180,10 @@ p.lead{color:var(--muted);margin-bottom:18px;font-size:clamp(14px,2vw,18px);}
 .prev:hover, .next:hover { background-color: rgba(0,0,0,0.7); }
 
 /* CARDS */
-.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;}
 .card{
   background:var(--card);
-  padding:18px;
+  padding:16px;
   border-radius:12px;
   display:flex;
   flex-direction:column;
@@ -190,11 +204,11 @@ p.lead{color:var(--muted);margin-bottom:18px;font-size:clamp(14px,2vw,18px);}
 .card *{position:relative; z-index:1;}
 
 /* ENTRENADORES */
-.trainers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
-.trainer{background:var(--glass);padding:12px;border-radius:12px;display:flex;gap:12px;align-items:center;}
+.trainers{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;}
+.trainer{background:var(--glass);padding:10px;border-radius:12px;display:flex;gap:10px;align-items:center;}
 .avatar{
-  width:68px;
-  height:68px;
+  width:60px;
+  height:60px;
   border-radius:12px;
   overflow:hidden;
   display:flex;
@@ -206,65 +220,67 @@ p.lead{color:var(--muted);margin-bottom:18px;font-size:clamp(14px,2vw,18px);}
 }
 
 /* PLANES */
-.plan{background:var(--card);padding:24px;border-radius:14px;text-align:center;transition:transform 0.3s;width:100%;}
+.plan{background:var(--card);padding:20px;border-radius:14px;text-align:center;transition:transform 0.3s;width:100%;}
 .plan:hover{transform:scale(1.05);}
 .plan h3{margin-bottom:8px;}
-.plan .price{font-size:28px;font-weight:800;color:var(--accent);margin-bottom:12px;}
+.plan .price{font-size:24px;font-weight:800;color:var(--accent);margin-bottom:12px;}
 .plan button{margin-top:12px;}
 
 /* FOOTER */
-footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
+footer{text-align:center;padding:20px;margin-top:50px;color:var(--muted);}
 
 /* ICONOS FLOTANTES */
 .float-contact{
   position:fixed;
-  right:20px;
-  bottom:20px;
+  right:12px;
+  bottom:12px;
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:10px;
   z-index:1001;
 }
 .float-contact a, .float-contact button{
   display:flex;
   align-items:center;
   justify-content:center;
-  width:56px;
-  height:56px;
+  width:50px;
+  height:50px;
   border-radius:50%;
   background:linear-gradient(45deg,var(--accent),var(--accent-2));
   color:white;
-  font-size:22px;
+  font-size:20px;
   cursor:pointer;
   box-shadow:0 0 20px rgba(0,0,0,0.5);
   border:none;
   text-decoration:none;
+  transition: transform 0.3s ease;
 }
 .float-contact a:hover, .float-contact button:hover{
   transform:scale(1.1);
-  transition:0.3s;
 }
 
-/* HORARIOS ABAJO */
-#horarios{margin-top:40px;}
-#horarios table{width:100%; max-width:600px; margin:0 auto; border-collapse:collapse; color:#e6eef6; font-size:16px;}
-#horarios table td{padding:6px 12px; font-weight:600;}
+/* HORARIOS */
+#horarios{margin-top:32px;}
+#horarios table{width:100%; max-width:600px; margin:0 auto; border-collapse:collapse; color:#e6eef6; font-size:14px;}
+#horarios table td{padding:6px 10px; font-weight:600;}
 #horarios table tr:nth-child(even){background:rgba(255,255,255,0.05);}
 
 /* RESPONSIVE GENERAL */
 @media(max-width:1024px){
-  .hero{grid-template-columns:1fr;}
+  .hero-card{padding:20px;}
+  nav a{font-size:clamp(12px,2.5vw,14px);}
 }
 @media(max-width:480px){
-  h1{font-size:28px;}
-  p.lead{font-size:14px;}
-  .cta, .btn-lg{width:100%; text-align:center;}
+  header{padding:6px 8px;}
+  .hero-card{padding:16px;}
+  nav a{padding:4px 2px; font-size:14px;}
+  h1{font-size:22px;}
+  p.lead{font-size:12px;}
   .trainers{grid-template-columns:1fr;}
   .grid-3{grid-template-columns:1fr;}
+  .plan .price{font-size:20px;}
 }
-
-/* CORRECCIÓN HEADER FIJO */
-section { scroll-margin-top: 90px; }
+section{scroll-margin-top:90px;}
 </style>
 </head>
 <body>
@@ -272,9 +288,7 @@ section { scroll-margin-top: 90px; }
 <div class="container">
 <header>
   <div class="brand">
-    <div class="logo">
-      <img src="IMG/LOGO.png" alt="SPORTIME">
-    </div>
+    <div class="logo"><img src="IMG/LOGO.png" alt="SPORTIME"></div>
     <div>
       <div style="font-weight:800">SPORTIME-A3</div>
       <div style="font-size:12px;color:var(--muted)">Gimnasio • Sumba • Slud</div>
@@ -410,15 +424,9 @@ section { scroll-margin-top: 90px; }
 
 <!-- ICONOS FLOTANTES -->
 <div class="float-contact">
-  <a href="https://wa.me/5217221383605?text=Me%20podr%C3%ADa%20agendar%20una%20cita%20para%20conocer%20el%20lugar" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <a href="https://www.instagram.com/sportimea3?igsh=dmIyYTV0MHk2MXdm" target="_blank" onclick="openInstagram(event)">
-    <i class="fab fa-instagram"></i>
-  </a>
-  <a href="https://www.facebook.com/profile.php?id=61572079096195" target="_blank" onclick="openFacebook(event)">
-    <i class="fab fa-facebook"></i>
-  </a>
+  <a href="https://wa.me/5217221383605" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.instagram.com/sportimea3" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.facebook.com/profile.php?id=61572079096195" target="_blank"><i class="fab fa-facebook"></i></a>
 </div>
 
 <script>
@@ -454,67 +462,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 3000);
 });
 
-// Instagram móvil/web
-function openInstagram(e) {
+// Cómo llegar
+function openRoute(e){
   e.preventDefault();
-  var urlWeb = "https://www.instagram.com/sportimea3?igsh=dmIyYTV0MHk2MXdm";
-  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if(isMobile){
-    var appUrl = "instagram://user?username=sportimea3";
-    window.location = appUrl;
-    setTimeout(function(){ window.location = urlWeb; }, 2000);
-  } else { window.open(urlWeb, "_blank"); }
-}
-
-// Facebook móvil/web
-function openFacebook(e) {
-  e.preventDefault();
-  var urlWeb = "https://www.facebook.com/profile.php?id=61572079096195";
-  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if(isMobile){
-    var appUrl = "fb://profile/61572079096195";
-    window.location = appUrl;
-    setTimeout(function(){ window.location = urlWeb; }, 2000);
-  } else { window.open(urlWeb, "_blank"); }
-}
-
-// Cómo llegar (abre app o web)
-function openRoute(e) {
-  e.preventDefault();
-  var destination = "V. Los Serranos 147, La Magdalena, San Mateo Atenco";
-  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  var urlWeb = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(destination);
-
-  if (isMobile) {
-    if (isIOS) {
-      var appUrl = "comgooglemaps://?daddr=" + encodeURIComponent(destination) + "&directionsmode=driving";
-      var fallbackTimeout = setTimeout(function() {
-        window.location = "http://maps.apple.com/?daddr=" + encodeURIComponent(destination) + "&dirflg=d";
-      }, 1500);
-      var iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      iframe.src = appUrl;
-      document.body.appendChild(iframe);
-      setTimeout(function() {
-        document.body.removeChild(iframe);
-        clearTimeout(fallbackTimeout);
-      }, 2000);
-    } else {
-      var appUrl = "comgooglemaps://?daddr=" + encodeURIComponent(destination) + "&directionsmode=driving";
-      var timeout = setTimeout(function() {
-        window.location = urlWeb;
-      }, 1500);
-      var iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      iframe.src = appUrl;
-      document.body.appendChild(iframe);
-      setTimeout(function() {
-        document.body.removeChild(iframe);
-        clearTimeout(timeout);
-      }, 2000);
-    }
-  } else { window.open(urlWeb, "_blank"); }
+  const destination = "V. Los Serranos 147, La Magdalena, San Mateo Atenco";
+  window.open("https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(destination), "_blank");
 }
 </script>
 
