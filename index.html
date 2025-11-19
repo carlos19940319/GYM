@@ -267,8 +267,6 @@ section { scroll-margin-top: 90px; }
   <div class="hero-card">
     <h1>Optimiza tu entrenamiento.<br>Transforma tu vida.</h1>
     <p class="lead">Clases personalizadas, asesoría profesional y un ambiente motivador que potencia tus resultados.</p>
-    <!-- Botón Cómo llegar -->
-    <button class="cta" onclick="openRoute(event)">Cómo llegar</button>
   </div>
 
   <!-- Carrusel -->
@@ -338,7 +336,6 @@ section { scroll-margin-top: 90px; }
   <div class="card" style="padding:24px;">
     <strong>Visítanos:</strong> V. Los Serranos 147, La Magdalena, San Mateo Atenco<br>
     <strong>Teléfono:</strong> <a href="tel:+5217221383605" style="color:var(--accent)">+52 1 722 138 3605</a><br><br>
-    <!-- Solo botón Cómo llegar -->
     <button class="cta" onclick="openRoute(event)">Cómo llegar</button>
   </div>
 </section>
@@ -434,17 +431,34 @@ function openFacebook(e) {
   } else { window.open(urlWeb, "_blank"); }
 }
 
-// Cómo llegar con Google Maps (app o web)
+// Google Maps: abrir app primero y fallback web
 function openRoute(e) {
   e.preventDefault();
   var destination = "V. Los Serranos 147, La Magdalena, San Mateo Atenco";
-  var urlWeb = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(destination);
   var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if(isMobile){
+  var urlWeb = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(destination);
+
+  if (isMobile) {
     var appUrl = "comgooglemaps://?daddr=" + encodeURIComponent(destination) + "&directionsmode=driving";
-    window.location = appUrl;
-    setTimeout(() => { window.location = urlWeb; }, 2000);
+
+    // Intentar abrir la app con iframe
+    var timeout = setTimeout(function() {
+      window.location = urlWeb; // Si no abre la app, ir a la web
+    }, 1500);
+
+    var iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = appUrl;
+    document.body.appendChild(iframe);
+
+    // Limpieza del iframe y del timeout
+    setTimeout(function() {
+      document.body.removeChild(iframe);
+      clearTimeout(timeout);
+    }, 2000);
+
   } else {
+    // Desktop abre la web
     window.open(urlWeb, "_blank");
   }
 }
@@ -452,4 +466,3 @@ function openRoute(e) {
 
 </body>
 </html>
-
