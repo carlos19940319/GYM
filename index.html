@@ -200,6 +200,44 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
   margin-top:12px;
 }
 
+/* CARRUSEL */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+.slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+/* Botones carrusel */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 24px;
+  z-index: 2;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+.prev:hover, .next:hover { background-color: rgba(0,0,0,0.7); }
+
 /* RESPONSIVE GENERAL */
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr;}
@@ -210,6 +248,11 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
   .cta, .btn-lg{width:100%; text-align:center;}
   .trainers{grid-template-columns:1fr;}
   .grid-3{grid-template-columns:1fr;}
+}
+
+/* 🔹 CORRECCIÓN HEADER FIJO */
+section {
+  scroll-margin-top: 90px; /* Altura del header */
 }
 </style>
 </head>
@@ -231,7 +274,6 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
     <a href="#entrenadores">Entrenadores</a>
     <a href="#planes">Planes</a>
     <a href="#contacto">Contacto</a>
-   
   </nav>
 </header>
 </div>
@@ -245,102 +287,21 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
     <button class="btn-lg" id="startTrial" style="background:var(--accent);color:white">Prueba gratis</button>
     <button class="btn-lg btn-ghost" id="openModalHorarios">Ver horarios</button>
   </div>
- 
-<!-- Carrusel de imágenes -->
-<div class="carousel">
-  <div class="slides">
-    <div class="slide" style="background-image: url('IMG/FOTO1.jpg');"></div>
-    <div class="slide" style="background-image: url('IMG/FOTO1.jpg');"></div>
-    <div class="slide" style="background-image: url('IMG/FOTO1.jpg');"></div>
-    <!-- Más imágenes -->
+
+  <!-- Carrusel de imágenes -->
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide" style="background-image: url('IMG/FOTO1.jpg');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO2.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO3.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO4.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO5.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO6.png');"></div>
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
   </div>
-
-  <!-- Botones de navegación -->
-  <button class="prev">&#10094;</button>
-  <button class="next">&#10095;</button>
-</div>
-
-<style>
-  .carousel {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    overflow: hidden;
-    border-radius: 20px;
-  }
-
-  .slides {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease-in-out;
-  }
-
-  .slide {
-    min-width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-  }
-
-  /* Botones */
-  .prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 24px;
-    z-index: 2;
-  }
-
-  .prev { left: 10px; }
-  .next { right: 10px; }
-
-  .prev:hover, .next:hover { background-color: rgba(0,0,0,0.7); }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelector('.slides');
-    const slideElements = document.querySelectorAll('.slide');
-    const slideCount = slideElements.length;
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
-    let index = 0;
-
-    const showSlide = (i) => {
-      slides.style.transform = `translateX(${-i * 100}%)`;
-    };
-
-    nextBtn.addEventListener('click', () => {
-      index = (index + 1) % slideCount;
-      showSlide(index);
-    });
-
-    prevBtn.addEventListener('click', () => {
-      index = (index - 1 + slideCount) % slideCount;
-      showSlide(index);
-    });
-
-    // Cambio automático cada 3 segundos
-    setInterval(() => {
-      index = (index + 1) % slideCount;
-      showSlide(index);
-    }, 3000);
-  });
-</script>
-
-
-
-
-
-    <!-- Overlay opcional para oscurecer un poco la imagen -->
-    <div style="position:absolute; inset:0; background: rgba(0,0,0,0.0); border-radius:20px;"></div>
+</section>
 </div>
 
 <!-- MODAL HORARIOS -->
@@ -435,6 +396,35 @@ function initMap(){
   const map = new google.maps.Map(document.getElementById("map"), {zoom:15, center:location});
   const marker = new google.maps.Marker({position:location,map:map,title:"SPORTIME"});
 }
+
+// CARRUSEL
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelector('.slides');
+  const slideElements = document.querySelectorAll('.slide');
+  const slideCount = slideElements.length;
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+  let index = 0;
+
+  const showSlide = (i) => {
+    slides.style.transform = `translateX(${-i * 100}%)`;
+  };
+
+  nextBtn.addEventListener('click', () => {
+    index = (index + 1) % slideCount;
+    showSlide(index);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    index = (index - 1 + slideCount) % slideCount;
+    showSlide(index);
+  });
+
+  setInterval(() => {
+    index = (index + 1) % slideCount;
+    showSlide(index);
+  }, 3000);
+});
 </script>
 <script async src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script>
 </body>
