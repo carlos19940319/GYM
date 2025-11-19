@@ -22,7 +22,6 @@
   --glass: rgba(255,255,255,0.04);
   --radius:14px;
 }
-
 *{box-sizing:border-box;margin:0;padding:0;}
 body{
   font-family:Inter, sans-serif;
@@ -60,7 +59,6 @@ header{
   background-size: cover;
   padding:8px 12px;
 }
-
 .brand{display:flex;gap:10px;align-items:center;}
 .logo{
   width:48px;
@@ -93,17 +91,15 @@ nav a{
   font-size:clamp(12px,1.8vw,16px);
   min-width:0;
   word-break:break-word;
-  border:2px solid rgba(255,255,255,0.3); /* Contorno semi-transparente */
+  border:2px solid rgba(255,255,255,0.3);
   border-radius:8px;
   backdrop-filter:blur(6px);
   transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-  -webkit-tap-highlight-color: transparent; /* Quitar recuadro verdoso en móviles */
   outline: none;
-  -webkit-user-select: none;
   user-select: none;
 }
 nav a:hover, nav a:focus{
-  transform: scale(1.08); /* Zoom profesional al pasar */
+  transform: scale(1.08);
   z-index:2;
 }
 nav a i{font-size:20px;transition:0.3s;}
@@ -138,7 +134,15 @@ nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
   align-items:start;
   margin:16px 0;
 }
-.hero-card{background:var(--glass);border-radius:var(--radius);padding:24px;backdrop-filter:blur(6px);}
+.hero-card{
+  background:var(--glass);
+  border-radius:var(--radius);
+  padding:24px;
+  backdrop-filter:blur(6px);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
 h1{font-size:clamp(24px,5vw,48px);margin-bottom:10px;}
 p.lead{color:var(--muted);margin-bottom:12px;font-size:clamp(14px,2vw,18px);}
 
@@ -291,7 +295,7 @@ section{scroll-margin-top:90px;}
     <div class="logo"><img src="IMG/LOGO.png" alt="SPORTIME"></div>
     <div>
       <div style="font-weight:800">SPORTIME-A3</div>
-      <div style="font-size:12px;color:var(--muted)">Gimnasio • Sumba • Slud</div>
+      <div style="font-size:12px;color:var(--muted)">Gimnasio • Salud • Comunidad</div>
     </div>
   </div>
   <nav id="navMenu">
@@ -309,6 +313,14 @@ section{scroll-margin-top:90px;}
   <div class="hero-card">
     <h1>Optimiza tu entrenamiento.<br>Transforma tu vida.</h1>
     <p class="lead">Clases personalizadas, asesoría profesional y un ambiente motivador que potencia tus resultados.</p>
+    
+    <!-- BOTÓN ORIGINAL PRIMER DÍA GRATIS -->
+    <a href="https://wa.me/5217221383605?text=Quiero%20aplicar%20la%20promoci%C3%B3n%20del%20primer%20d%C3%ADa%20de%20visita%20es%20gratis" 
+       target="_blank" class="cta">Primer día gratis</a>
+
+    <!-- BOTÓN EXTRA WHATSAPP INDEPENDIENTE -->
+    <a href="https://wa.me/5217221383605?text=Hola,%20quiero%20informes%20sobre%20las%20clases%20y%20planes" 
+       target="_blank" class="cta" style="margin-top:10px;">Consultar promociones de temporada</a>
   </div>
 
   <!-- Carrusel -->
@@ -385,7 +397,7 @@ section{scroll-margin-top:90px;}
     </div>
     <div class="trainer">
       <div class="avatar" style="background-image: url('IMG/FONDO.png');"></div>
-      <div>Carlos Miranda — Yoga</div>
+      <div>Lina Cortés — Yoga</div>
     </div>
   </div>
 </section>
@@ -402,15 +414,11 @@ section{scroll-margin-top:90px;}
 
 <!-- HORARIOS -->
 <section class="container" id="horarios">
-  <h2 style="text-align:center; color:var(--accent); margin-bottom:16px;">Horarios de Atención</h2>
+  <h2 style="text-align:center; color:var(--accent); margin-bottom:16px;">Horarios de servicio</h2>
   <table>
     <tr>
-      <td>Lunes - Viernes</td>
-      <td>6:00 AM - 10:00 PM</td>
-    </tr>
-    <tr>
-      <td>Sábado</td>
-      <td>7:00 AM - 4:00 PM</td>
+      <td>Lunes - Sabado</td>
+      <td>05:30 AM - 10:00 PM</td>
     </tr>
     <tr>
       <td>Domingo</td>
@@ -423,9 +431,15 @@ section{scroll-margin-top:90px;}
 
 <!-- ICONOS FLOTANTES -->
 <div class="float-contact">
-  <a href="https://wa.me/5217221383605" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://www.instagram.com/sportimea3" target="_blank"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.facebook.com/profile.php?id=61572079096195" target="_blank"><i class="fab fa-facebook"></i></a>
+  <a href="https://wa.me/5217221383605?text=Hola%20me%20podria%20dar%20mas%20informes%20sobre%20las%20actividades%20del%20GYM" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://www.instagram.com/sportimea3" target="_blank" onclick="openInstagram(event)">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.facebook.com/profile.php?id=61572079096195" target="_blank" onclick="openFacebook(event)">
+    <i class="fab fa-facebook"></i>
+  </a>
 </div>
 
 <script>
@@ -440,38 +454,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.querySelector('.prev');
   const nextBtn = document.querySelector('.next');
   let index = 0;
-
-  const showSlide = (i) => {
-    slides.style.transform = `translateX(${-i * 100}%)`;
-  };
-
-  nextBtn.addEventListener('click', () => {
-    index = (index + 1) % slideCount;
-    showSlide(index);
-  });
-
-  prevBtn.addEventListener('click', () => {
-    index = (index - 1 + slideCount) % slideCount;
-    showSlide(index);
-  });
-
-  setInterval(() => {
-    index = (index + 1) % slideCount;
-    showSlide(index);
-  }, 3000);
+  const showSlide = (i) => { slides.style.transform = `translateX(${-i*100}%)`; };
+  nextBtn.addEventListener('click', () => { index = (index+1)%slideCount; showSlide(index); });
+  prevBtn.addEventListener('click', () => { index = (index-1+slideCount)%slideCount; showSlide(index); });
+  setInterval(()=>{ index=(index+1)%slideCount; showSlide(index); }, 3000);
 });
 
 // Cómo llegar
 function openRoute(e){
   e.preventDefault();
-  const destination = "AV. Los Serranos 147, La Magdalena, San Mateo Atenco";
+  const destination = "V. Los Serranos 147, La Magdalena, San Mateo Atenco";
   window.open("https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(destination), "_blank");
+}
+
+// Instagram app/web
+function openInstagram(e){
+  e.preventDefault();
+  const urlApp = "instagram://user?username=sportimea3";
+  const urlWeb = "https://www.instagram.com/sportimea3";
+  window.location = urlApp;
+  setTimeout(()=>{ window.open(urlWeb,"_blank"); }, 500);
+}
+
+// Facebook app/web
+function openFacebook(e){
+  e.preventDefault();
+  const urlApp = "fb://profile/61572079096195";
+  const urlWeb = "https://www.facebook.com/profile.php?id=61572079096195";
+  window.location = urlApp;
+  setTimeout(()=>{ window.open(urlWeb,"_blank"); }, 500);
 }
 </script>
 
 </body>
 </html>
-
-
-
-
