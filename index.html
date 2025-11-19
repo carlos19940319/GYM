@@ -76,24 +76,24 @@ header{
   object-fit:contain;
 }
 
-/* Navegación - Siempre horizontal, adaptativa */
+/* Navegación adaptativa sin scroll */
 nav{
-  display:flex;
-  gap:16px;
-  align-items:center;
-  flex-wrap:nowrap;
-  justify-content:center;
-  max-width:600px;
-  width:100%;
-  margin-left:20px;
+  display: flex;
+  flex-wrap: wrap;          /* Permite que los enlaces se muevan a otra línea si es necesario */
+  gap: 8px;                 /* Espacio entre enlaces */
+  justify-content: center;  /* Centrado horizontal */
+  width: 100%;
+  margin-left: 0;
+  padding: 4px 0;
 }
 nav a{
-  color:var(--muted);
-  font-weight:600;
-  text-align:center;
-  padding:8px 12px;
-  flex-shrink:0;
-  min-width:60px;
+  white-space: normal;      /* Permite que el texto se divida en varias líneas si es necesario */
+  text-align: center;
+  padding: 6px 10px;
+  font-weight: 600;
+  font-size: clamp(12px, 2vw, 16px); /* Se ajusta automáticamente al ancho de pantalla */
+  flex: 1 1 auto;           /* Los enlaces se adaptan al espacio disponible */
+  min-width: 0;             /* Evita corte de texto */
 }
 nav a:hover{color:white;}
 nav a i{font-size:20px;transition:0.3s;}
