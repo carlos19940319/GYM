@@ -1,10 +1,11 @@
+
 <!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>FitPulse - Gimnasio Profesional</title>
-<meta name="description" content="Landing page moderna para un gimnasio profesional - FitPulse" />
+<title>SPORTIME - Gimnasio Profesional</title>
+<meta name="description" content="Landing page moderna para un gimnasio profesional - SPORTIME" />
 
 <!-- ICONOS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -129,14 +130,41 @@ p.lead{color:var(--muted);margin-bottom:18px;font-size:clamp(14px,2vw,18px);}
 /* FOOTER */
 footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
 
-/* WHATSAPP FLOAT */
-.float-contact{
-  position:fixed;right:20px;bottom:20px;
+/* FLOAT CONTACT LIST */
+.float-list{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  z-index:1000;
+}
+.float-list a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:50px;
+  height:50px;
+  border-radius:50%;
   background:linear-gradient(45deg,var(--accent),var(--accent-2));
-  padding:14px 18px;border-radius:16px;
-  cursor:pointer;color:white;font-weight:700;
+  color:white;
+  font-size:22px;
+  transition:transform 0.3s;
   box-shadow:0 0 20px rgba(0,0,0,0.5);
 }
+.float-list a:hover{transform:scale(1.1);}
+.float-list a span{
+  position:absolute;
+  right:60px;
+  background:var(--card);
+  color:white;
+  padding:6px 10px;
+  border-radius:8px;
+  font-size:14px;
+  display:none;
+}
+.float-list a:hover span{display:block;}
 
 /* MODAL HORARIOS */
 .modal-bg{
@@ -176,19 +204,15 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
   <div class="brand">
     <div class="logo">FP</div>
     <div>
-      <div style="font-weight:800">FitPulse</div>
+      <div style="font-weight:800">SPORTIME</div>
       <div style="font-size:12px;color:var(--muted)">Gimnasio • Salud • Comunidad</div>
-
     </div>
-    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
   </div>
   <nav id="navMenu">
     <a href="#clases">Clases</a>
     <a href="#entrenadores">Entrenadores</a>
     <a href="#planes">Planes</a>
     <a href="#contacto">Contacto</a>
-    
     <button class="cta" id="joinBtn">Únete</button>
   </nav>
 </header>
@@ -278,11 +302,13 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
   </div>
 </section>
 
-<footer>© <span id="year"></span> FitPulse — Hecho con pasión 💪</footer>
+<footer>© <span id="year"></span> SPORTIME — Hecho con pasión 💪</footer>
 
-<!-- WHATSAPP FLOAT -->
-<div class="float-contact" id="floatContact">
-  <i class="fab fa-whatsapp"></i> WhatsApp
+<!-- FLOATING CONTACTS -->
+<div class="float-list">
+  <a href="https://wa.me/525510000000" target="_blank"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+  <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+  <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i><span>Facebook</span></a>
 </div>
 
 <script>
@@ -294,16 +320,11 @@ const modal = document.getElementById('modalHorarios');
 document.getElementById('openModalHorarios').onclick =()=> modal.style.display="flex";
 document.getElementById('closeModalHorarios').onclick =()=> modal.style.display="none";
 
-// WHATSAPP
-document.getElementById('floatContact').onclick = () =>{
-  window.open('https://wa.me/525510000000','_blank');
-};
-
 // GOOGLE MAPS
 function initMap(){
   const location = {lat: 19.432608, lng: -99.133209}; // CDMX ejemplo
   const map = new google.maps.Map(document.getElementById("map"), {zoom:15, center:location});
-  const marker = new google.maps.Marker({position:location,map:map,title:"FitPulse"});
+  const marker = new google.maps.Marker({position:location,map:map,title:"SPORTIME"});
 }
 </script>
 <script async src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script>
