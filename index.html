@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -167,9 +168,27 @@ p.lead{color:var(--muted);margin-bottom:18px;font-size:clamp(14px,2vw,18px);}
 
 /* CARDS */
 .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
-.card{background:var(--card);padding:18px;border-radius:12px;}
+.card{
+  background:var(--card);
+  padding:18px;
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
 .card h3{margin:0 0 6px;}
-.card p{color:var(--muted);margin:0;}
+.card p{color:white;margin:0;}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.4); /* sombreado para texto legible */
+  z-index:0;
+}
+.card *{position:relative; z-index:1;}
 
 /* ENTRENADORES */
 .trainers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
@@ -289,9 +308,18 @@ section { scroll-margin-top: 90px; }
 <section class="container" id="clases">
   <h2>Nuestras clases</h2>
   <div class="grid-3">
-    <div class="card"><h3>HIIT</h3><p>Entrenamientos intensos y cortos.</p></div>
-    <div class="card"><h3>Yoga & Stretch</h3><p>Mejora tu movilidad y flexibilidad.</p></div>
-    <div class="card"><h3>Fuerza</h3><p>Gana masa muscular con rutinas guiadas.</p></div>
+    <div class="card" style="background: url('IMG/FOTO2.png') center/cover no-repeat;">
+      <h3>HIIT</h3>
+      <p>Entrenamientos intensos y cortos.</p>
+    </div>
+    <div class="card" style="background: url('IMG/FOTO3.png') center/cover no-repeat;">
+      <h3>Yoga & Stretch</h3>
+      <p>Mejora tu movilidad y flexibilidad.</p>
+    </div>
+    <div class="card" style="background: url('IMG/FOTO4.png') center/cover no-repeat;">
+      <h3>Fuerza</h3>
+      <p>Gana masa muscular con rutinas guiadas.</p>
+    </div>
   </div>
 </section>
 
@@ -340,7 +368,7 @@ section { scroll-margin-top: 90px; }
   </div>
 </section>
 
-<!-- HORARIOS ABAJO -->
+<!-- HORARIOS -->
 <section class="container" id="horarios">
   <h2 style="text-align:center; color:var(--accent); margin-bottom:16px;">Horarios de Atención</h2>
   <table>
@@ -431,36 +459,43 @@ function openFacebook(e) {
   } else { window.open(urlWeb, "_blank"); }
 }
 
-// Google Maps: abrir app primero y fallback web
+// Cómo llegar (abre app o web)
 function openRoute(e) {
   e.preventDefault();
   var destination = "V. Los Serranos 147, La Magdalena, San Mateo Atenco";
   var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
   var urlWeb = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(destination);
 
   if (isMobile) {
-    var appUrl = "comgooglemaps://?daddr=" + encodeURIComponent(destination) + "&directionsmode=driving";
-
-    // Intentar abrir la app con iframe
-    var timeout = setTimeout(function() {
-      window.location = urlWeb; // Si no abre la app, ir a la web
-    }, 1500);
-
-    var iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.src = appUrl;
-    document.body.appendChild(iframe);
-
-    // Limpieza del iframe y del timeout
-    setTimeout(function() {
-      document.body.removeChild(iframe);
-      clearTimeout(timeout);
-    }, 2000);
-
-  } else {
-    // Desktop abre la web
-    window.open(urlWeb, "_blank");
-  }
+    if (isIOS) {
+      var appUrl = "comgooglemaps://?daddr=" + encodeURIComponent(destination) + "&directionsmode=driving";
+      var fallbackTimeout = setTimeout(function() {
+        window.location = "http://maps.apple.com/?daddr=" + encodeURIComponent(destination) + "&dirflg=d";
+      }, 1500);
+      var iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = appUrl;
+      document.body.appendChild(iframe);
+      setTimeout(function() {
+        document.body.removeChild(iframe);
+        clearTimeout(fallbackTimeout);
+      }, 2000);
+    } else {
+      var appUrl = "comgooglemaps://?daddr=" + encodeURIComponent(destination) + "&directionsmode=driving";
+      var timeout = setTimeout(function() {
+        window.location = urlWeb;
+      }, 1500);
+      var iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = appUrl;
+      document.body.appendChild(iframe);
+      setTimeout(function() {
+        document.body.removeChild(iframe);
+        clearTimeout(timeout);
+      }, 2000);
+    }
+  } else { window.open(urlWeb, "_blank"); }
 }
 </script>
 
