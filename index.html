@@ -288,6 +288,51 @@ section{scroll-margin-top:90px;}
 </style>
 </head>
 <body>
+  <!-- PRELOADER AISLADO -->
+<div id="preloader-wrapper">
+  <img src="IMG/LOGO.png" alt="Cargando...">
+</div>
+
+<style>
+  /* PRELOADER AISLADO */
+  #preloader-wrapper {
+    position: fixed;
+    inset: 0;
+    background: #0f1724;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* mucho más arriba que cualquier otro elemento */
+  }
+
+  #preloader-wrapper img {
+    width: 100vw;   /* ocupa todo el ancho de la pantalla */
+    height: 100vh;  /* ocupa todo el alto de la pantalla */
+    object-fit: cover;
+    animation: preloaderZoomOut 5s ease forwards; /* animación de entrada lenta */
+  }
+
+  @keyframes preloaderZoomOut {
+    0% {
+      transform: scale(1); /* empieza más grande */
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.5);   /* termina achicándose a su tamaño normal */
+      opacity: 0;            /* se desvanece al final */
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader-wrapper");
+    setTimeout(() => {
+      preloader.style.display = "none"; // se oculta después de 10 segundos
+    }, 5000); // coincide con la duración de la animación
+  });
+</script>
+
 
 <div class="container">
 <header>
@@ -468,27 +513,6 @@ function openRoute(e){
   const destination = "V. Los Serranos 147, La Magdalena, San Mateo Atenco";
   window.open("https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(destination), "_blank");
 }
-
-<script>
-// --- Función genérica para abrir app con fallback ---
-function openApp(e, urlApp, urlWeb){
-  e.preventDefault();
-
-  // Creamos un iframe oculto para intentar abrir la app
-  const iframe = document.createElement("iframe");
-  iframe.style.display = "none";
-  iframe.src = urlApp;
-  document.body.appendChild(iframe);
-
-  // Si después de 1 segundo la página sigue visible → la app NO se abrió
-  const start = Date.now();
-  setTimeout(() => {
-    if (Date.now() - start < 1100) {   // La app NO se abrió
-      window.location.href = urlWeb;   // Abrimos la web
-    }
-  }, 1000);
-}
-
 // --- Instagram ---
 function openInstagram(e){
   openApp(e,
@@ -505,8 +529,5 @@ function openFacebook(e){
   );
 }
 </script>
-
-</script>
-
 </body>
 </html>
