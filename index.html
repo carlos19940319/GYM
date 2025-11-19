@@ -288,7 +288,7 @@ section{scroll-margin-top:90px;}
 </style>
 </head>
 <body>
-  <!-- PRELOADER AISLADO -->
+<!-- PRELOADER AISLADO -->
 <div id="preloader-wrapper">
   <img src="IMG/FOTO1.jpg" alt="Cargando...">
 </div>
@@ -302,36 +302,39 @@ section{scroll-margin-top:90px;}
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 99999; /* mucho más arriba que cualquier otro elemento */
+    z-index: 99999;
   }
 
   #preloader-wrapper img {
-    width: 100vw;   /* ocupa todo el ancho de la pantalla */
-    height: 100vh;  /* ocupa todo el alto de la pantalla */
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
-    animation: preloaderZoomOut 5s ease forwards; /* animación de entrada lenta */
+    transform: scale(1);
+    transition: transform 4s ease, opacity 4s ease; /* animación lenta */
   }
 
-  @keyframes preloaderZoomOut {
-    0% {
-      transform: scale(1); /* empieza más grande */
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);   /* termina achicándose a su tamaño normal */
-      opacity: 0;            /* se desvanece al final */
-    }
+  /* Clase que dispara el zoom y desvanecimiento */
+  #preloader-wrapper.loaded img {
+    transform: scale(1); /* se achica */
+    opacity: 0;             /* se desvanece */
   }
 </style>
 
 <script>
-  window.addEventListener("load", () => {
-    const preloader = document.getElementById("preloader-wrapper");
+  // Espera a que toda la página cargue
+  window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader-wrapper');
+    preloader.classList.add('loaded'); // dispara la animación
+
+    // Elimina el preloader después de la animación
     setTimeout(() => {
-      preloader.style.display = "none"; // se oculta después de 10 segundos
-    }, 5000); // coincide con la duración de la animación
+      preloader.remove();
+    }, 4000); // coincide con la duración de la transición
   });
 </script>
+
+
+
 
 
 <div class="container">
@@ -531,6 +534,3 @@ function openFacebook(e){
 </script>
 </body>
 </html>
-
-
-
