@@ -44,20 +44,22 @@ a{text-decoration:none;color:inherit;}
 .container{max-width:1100px;margin:auto;padding:28px;}
 
 /* HEADER STICKY */
-header {
-  display: flex;
-  align-items: center;
+header{
+  display:flex;
+  align-items:center;
   justify-content: space-between;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  padding: 14px 20px;
-  background: linear-gradient(rgba(15,23,36,0.8), rgba(15,23,36,0.8)), 
+  flex-wrap:wrap;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  background: linear-gradient(rgba(15,23,36,0.7), rgba(15,23,36,0.7)), 
               url('IMG/TITULO.jpg') no-repeat center center;
   background-size: cover;
+  padding:14px 20px;
 }
+
 .brand{display:flex;gap:12px;align-items:center;}
 .logo{
   width:48px;
@@ -74,29 +76,29 @@ header {
   object-fit:contain;
 }
 
-/* NAVEGACION PROFESIONAL HORIZONTAL */
-nav {
+/* Navegación adaptativa sin scroll */
+nav{
   display: flex;
-  flex-wrap: nowrap; /* NO bajar líneas */
-  gap: 12px;
-  justify-content: flex-end;
-  flex: 1;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  margin-left: 0;
+  padding: 4px 0;
 }
-nav a {
-  flex: 1 1 auto;                /* se ajusta al espacio disponible */
+nav a{
+  white-space: normal;
   text-align: center;
   padding: 6px 10px;
   font-weight: 600;
-  font-size: clamp(12px, 1.5vw, 16px);
-  color: #e6eef6;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  font-size: clamp(12px, 2vw, 16px);
+  flex: 1 1 auto;
+  min-width: 0;
 }
-nav a:hover {
-  background: rgba(255,92,87,0.2);
-  color: white;
-  transform: scale(1.05);
-}
+nav a:hover{color:white;}
+nav a i{font-size:20px;transition:0.3s;}
+nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
+.mobile-toggle{ display:none; }
 
 /* BOTONES */
 .cta{
@@ -275,7 +277,7 @@ section { scroll-margin-top: 90px; }
     </div>
     <div>
       <div style="font-weight:800">SPORTIME-A3</div>
-      <div style="font-size:12px;color:var(--muted)">Gimnasio • Salud • Comunidad</div>
+      <div style="font-size:12px;color:var(--muted)">Gimnasio • Sumba • Slud</div>
     </div>
   </div>
   <nav id="navMenu">
@@ -361,16 +363,16 @@ section { scroll-margin-top: 90px; }
   <h2>Entrenadores</h2>
   <div class="trainers">
     <div class="trainer">
-      <div class="avatar" style="background-image: url('IMG/ENTRE1.png');"></div>
+      <div class="avatar" style="background-image: url('IMG/FONDO.png');"></div>
       <div>Carlos Miranda — Fuerza</div>
     </div>
     <div class="trainer">
-      <div class="avatar" style="background-image: url('IMG/ENTRE2.png');"></div>
+      <div class="avatar" style="background-image: url('IMG/FONDO.png');"></div>
       <div>José Martínez — HIIT</div>
     </div>
     <div class="trainer">
-      <div class="avatar" style="background-image: url('IMG/ENTRE3.png');"></div>
-      <div>Lina Cortés — Yoga</div>
+      <div class="avatar" style="background-image: url('IMG/FONDO.png');"></div>
+      <div>Carlos Miranda — Yoga</div>
     </div>
   </div>
 </section>
@@ -408,13 +410,13 @@ section { scroll-margin-top: 90px; }
 
 <!-- ICONOS FLOTANTES -->
 <div class="float-contact">
-  <a href="https://wa.me/5217221383605" target="_blank">
+  <a href="https://wa.me/5217221383605?text=Me%20podr%C3%ADa%20agendar%20una%20cita%20para%20conocer%20el%20lugar" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
-  <a href="https://www.instagram.com/sportimea3" target="_blank">
+  <a href="https://www.instagram.com/sportimea3?igsh=dmIyYTV0MHk2MXdm" target="_blank" onclick="openInstagram(event)">
     <i class="fab fa-instagram"></i>
   </a>
-  <a href="https://www.facebook.com/profile.php?id=61572079096195" target="_blank">
+  <a href="https://www.facebook.com/profile.php?id=61572079096195" target="_blank" onclick="openFacebook(event)">
     <i class="fab fa-facebook"></i>
   </a>
 </div>
@@ -452,11 +454,67 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 3000);
 });
 
-// Funciones de contacto y mapa
+// Instagram móvil/web
+function openInstagram(e) {
+  e.preventDefault();
+  var urlWeb = "https://www.instagram.com/sportimea3?igsh=dmIyYTV0MHk2MXdm";
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if(isMobile){
+    var appUrl = "instagram://user?username=sportimea3";
+    window.location = appUrl;
+    setTimeout(function(){ window.location = urlWeb; }, 2000);
+  } else { window.open(urlWeb, "_blank"); }
+}
+
+// Facebook móvil/web
+function openFacebook(e) {
+  e.preventDefault();
+  var urlWeb = "https://www.facebook.com/profile.php?id=61572079096195";
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if(isMobile){
+    var appUrl = "fb://profile/61572079096195";
+    window.location = appUrl;
+    setTimeout(function(){ window.location = urlWeb; }, 2000);
+  } else { window.open(urlWeb, "_blank"); }
+}
+
+// Cómo llegar (abre app o web)
 function openRoute(e) {
   e.preventDefault();
-  const destination = "V. Los Serranos 147, La Magdalena, San Mateo Atenco";
-  window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`, "_blank");
+  var destination = "V. Los Serranos 147, La Magdalena, San Mateo Atenco";
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  var urlWeb = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(destination);
+
+  if (isMobile) {
+    if (isIOS) {
+      var appUrl = "comgooglemaps://?daddr=" + encodeURIComponent(destination) + "&directionsmode=driving";
+      var fallbackTimeout = setTimeout(function() {
+        window.location = "http://maps.apple.com/?daddr=" + encodeURIComponent(destination) + "&dirflg=d";
+      }, 1500);
+      var iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = appUrl;
+      document.body.appendChild(iframe);
+      setTimeout(function() {
+        document.body.removeChild(iframe);
+        clearTimeout(fallbackTimeout);
+      }, 2000);
+    } else {
+      var appUrl = "comgooglemaps://?daddr=" + encodeURIComponent(destination) + "&directionsmode=driving";
+      var timeout = setTimeout(function() {
+        window.location = urlWeb;
+      }, 1500);
+      var iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = appUrl;
+      document.body.appendChild(iframe);
+      setTimeout(function() {
+        document.body.removeChild(iframe);
+        clearTimeout(timeout);
+      }, 2000);
+    }
+  } else { window.open(urlWeb, "_blank"); }
 }
 </script>
 
