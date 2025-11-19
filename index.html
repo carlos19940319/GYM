@@ -1,332 +1,279 @@
-
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FitPulse - Gimnasio</title>
-  <meta name="description" content="Landing page moderna para un gimnasio - FitPulse" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0f1724; /* deep navy */
-      --card:#0b1220;
-      --accent:#ff5c57; /* coral */
-      --accent-2:#06b6d4; /* teal */
-      --muted:#94a3b8;
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(180deg,var(--bg) 0%, #071122 100%);
-      color:#e6eef6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FitPulse - Gimnasio Profesional</title>
+<meta name="description" content="Landing page moderna para un gimnasio profesional - FitPulse" />
 
-    /* Container */
-    .container{max-width:1100px;margin:0 auto;padding:28px}
+<!-- ICONOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    /* Header / Nav */
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;box-shadow:0 6px 18px rgba(6,182,212,0.08)}
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600}
-    nav a:hover{color:white}
-    .cta{background:linear-gradient(90deg,var(--accent),#ff7a70);padding:10px 16px;border-radius:10px;color:white;font-weight:700;border:none;cursor:pointer}
+<!-- FUENTE -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin:32px 0}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:36px;backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
-    h1{font-size:38px;margin:0 0 10px}
-    p.lead{color:var(--muted);margin:0 0 18px}
-    .badges{display:flex;gap:10px;margin-bottom:18px}
-    .badge{background:var(--glass);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--muted);font-size:13px}
-    .hero-cta{display:flex;gap:12px}
-    .btn-lg{padding:12px 18px;border-radius:12px;border:none;font-weight:800;cursor:pointer}
-    .btn-ghost{background:transparent;color:var(--accent-2);border:1px solid rgba(6,182,212,0.12)}
+<style>
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#ff5c57;
+  --accent-2:#06b6d4;
+  --muted:#94a3b8;
+  --glass: rgba(255,255,255,0.04);
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:Inter, sans-serif;
+  background: url("IMG/FONDO.png") no-repeat center center fixed;
+  background-size: cover;
+  color:#e6eef6;
+}
+body::before{
+  content:"";
+  position: fixed;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+  z-index:-1;
+}
+a{text-decoration:none;color:inherit;}
+.container{max-width:1100px;margin:auto;padding:28px;}
 
-    /* Stats */
-    .stats{display:flex;gap:14px;margin-top:18px}
-    .stat{flex:1;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:12px;text-align:center}
-    .stat strong{display:block;font-size:20px}
-    .muted{color:var(--muted);font-size:13px}
+/* HEADER */
+header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+.brand{display:flex;gap:12px;align-items:center;}
+.logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;}
+nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+nav a{color:var(--muted);font-weight:600;}
+nav a:hover{color:white;}
+nav a i{font-size:20px;transition:0.3s;}
+nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
+.mobile-toggle{ display:none; font-size:26px; cursor:pointer; }
 
-    /* Right hero image mock */
-    .hero-preview{position:relative;height:420px;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,#071a2a 0%, #061124 100%);display:flex;align-items:center;justify-content:center}
-    .hero-preview .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.5))}
-    .dumbbells{width:280px;height:280px;border-radius:18px;background:linear-gradient(135deg,#101827, #152235);display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:800;color:rgba(255,255,255,0.08)}
+/* BOTONES */
+.cta{
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  padding:10px 16px;
+  border-radius:10px;
+  color:white;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+  transition: transform 0.3s;
+}
+.cta:hover{ transform:scale(1.05); }
 
-    /* Sections */
-    section{margin:44px 0}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:var(--card);padding:18px;border-radius:12px}
-    .card h3{margin:0 0 6px}
-    .card p{color:var(--muted);margin:0}
+.btn-lg{padding:12px 18px;border-radius:12px;border:none;font-weight:800;cursor:pointer;}
+.btn-ghost{background:transparent;color:var(--accent-2);border:1px solid rgba(6,182,212,0.12);}
 
-    /* Trainers */
-    .trainers{display:flex;gap:14px}
-    .trainer{flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:12px;display:flex;gap:12px;align-items:center}
-    .avatar{width:68px;height:68px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800}
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin:32px 0;}
+.hero-card{background:var(--glass);border-radius:var(--radius);padding:36px;backdrop-filter:blur(6px);}
+h1{font-size:38px;margin-bottom:10px;}
+p.lead{color:var(--muted);margin-bottom:18px;}
+.hero-preview{height:420px;border-radius:var(--radius);background:linear-gradient(135deg,#071a2a,#061124);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.hero-preview .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.4);}
+.dumbbells{font-size:58px;font-weight:800;opacity:0.1;}
 
-    /* Footer */
-    footer{padding:22px 0;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+/* CARDS */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.card{background:var(--card);padding:18px;border-radius:12px;}
+.card h3{margin:0 0 6px;}
+.card p{color:var(--muted);margin:0;}
 
-    /* Responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr;}
-      .hero-preview{height:320px}
-      .grid-3{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:640px){
-      .container{padding:18px}
-      header{flex-direction:column;align-items:flex-start;gap:12px}
-      nav{display:none}
-      .mobile-toggle{display:block}
-      .grid-3{grid-template-columns:1fr}
-      footer{flex-direction:column;gap:10px;align-items:flex-start}
-    }
+/* ENTRENADORES */
+.trainers{display:flex;gap:14px;}
+.trainer{flex:1;background:var(--glass);padding:12px;border-radius:12px;display:flex;gap:12px;align-items:center;}
+.avatar{width:68px;height:68px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;}
 
-    /* Animations */
-    .fade-in{opacity:0;transform:translateY(12px);transition:all 700ms cubic-bezier(.2,.9,.2,1)}
-    .fade-in.show{opacity:1;transform:none}
-    .pulse{animation:pulse 2.4s ease-in-out infinite}
-    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+/* PLANES */
+.plan{background:var(--card);padding:24px;border-radius:14px;text-align:center;transition:transform 0.3s;}
+.plan:hover{transform:scale(1.05);}
+.plan h3{margin-bottom:8px;}
+.plan .price{font-size:28px;font-weight:800;color:var(--accent);margin-bottom:12px;}
+.plan button{margin-top:12px;}
 
-    /* Floating action */
-    .float-contact{position:fixed;right:18px;bottom:18px;background:linear-gradient(135deg,var(--accent),var(--accent-2));padding:14px;border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,0.5);cursor:pointer}
-  </style>
+/* FOOTER */
+footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
+
+/* WHATSAPP FLOAT */
+.float-contact{
+  position:fixed;right:20px;bottom:20px;
+  background:linear-gradient(45deg,var(--accent),var(--accent-2));
+  padding:14px 18px;border-radius:16px;
+  cursor:pointer;color:white;font-weight:700;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+/* MODAL HORARIOS */
+.modal-bg{
+  position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;
+}
+.modal{
+  background:var(--card);padding:24px;border-radius:14px;max-width:380px;text-align:center;
+}
+.modal table{width:100%;color:white;margin-top:10px}
+.modal table td{padding:4px 0;}
+
+/* MAPA */
+#map{
+  width:100%;
+  height:300px;
+  border-radius:12px;
+  margin-top:12px;
+}
+
+/* responsive */
+@media(max-width:760px){
+  nav{display:none;}
+  .mobile-toggle{display:block;}
+  .hero{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">FP</div>
-        <div>
-          <div style="font-weight:800">FitPulse</div>
-          <div style="font-size:12px;color:var(--muted)">Gimnasio • Salud • Comunidad</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#clases">Clases</a>
-        <a href="#entrenadores">Entrenadores</a>
-        <a href="#planes">Planes</a>
-        <a href="#contacto">Contacto</a>
-        <button class="cta" id="joinBtn">Únete</button>
-      </nav>
-      <button class="mobile-toggle cta" style="display:none">Menú</button>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-card fade-in" data-animate>
-          <div class="badges">
-            <span class="badge">24/7</span>
-            <span class="badge">Entrenadores Certificados</span>
-            <span class="badge">Ubicación céntrica</span>
-          </div>
-          <h1>Entrena más inteligente. Vive más fuerte.</h1>
-          <p class="lead">Entrenamiento presencial, asesoría en persona y ambiente motivador en nuestras instalaciones. ¡Empieza hoy y siente la diferencia!</p>
-
-          <div class="hero-cta">
-            <button class="btn-lg" id="startTrial" style="background:linear-gradient(90deg,var(--accent),#ff7a70);color:white">Prueba gratis</button>
-            <button class="btn-lg btn-ghost">Ver horarios</button>
-          </div>
-
-          <div class="stats">
-            <div class="stat">
-              <strong id="countMembers">0</strong>
-              <div class="muted">Miembros</div>
-            </div>
-            <div class="stat">
-              <strong id="countClasses">0</strong>
-              <div class="muted">Clases / semana</div>
-            </div>
-            <div class="stat">
-              <strong id="countTrainers">0</strong>
-              <div class="muted">Entrenadores</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-preview fade-in" data-animate>
-          <div class="overlay"></div>
-          <div class="dumbbells pulse">💪</div>
-        </div>
-      </section>
-
-      <section id="clases">
-        <h2 style="margin:0 0 12px">Nuestras clases</h2>
-        <div class="grid-3">
-          <article class="card fade-in" data-animate>
-            <h3>HIIT</h3>
-            <p>Entrenamientos cortos, intensos y con quemas calóricas altas — perfectos para quienes tienen poco tiempo.</p>
-          </article>
-          <article class="card fade-in" data-animate>
-            <h3>Yoga & Stretch</h3>
-            <p>Mejora tu flexibilidad y reduce el estrés con clases guiadas por instructores certificados.</p>
-          </article>
-          <article class="card fade-in" data-animate>
-            <h3>Entrenamiento de fuerza</h3>
-            <p>Programas progresivos para ganar fuerza y mejorar tu composición corporal.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="planes">
-        <h2 style="margin:0 0 12px">Planes</h2>
-        <div class="grid-3">
-          <div class="card fade-in" data-animate>
-            <h3>Mensual</h3>
-            <p class="muted">Acceso ilimitado + 2 sesiones con entrenador.</p>
-          </div>
-          <div class="card fade-in" data-animate>
-            <h3>Trimestral</h3>
-            <p class="muted">Mejor precio por mes + planificación nutricional.</p>
-          </div>
-          <div class="card fade-in" data-animate>
-            <h3>Anual</h3>
-            <p class="muted">Ahorra y recibe sesiones extra + merchandising.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="entrenadores">
-        <h2 style="margin:0 0 12px">Entrenadores</h2>
-        <div class="trainers">
-          <div class="trainer fade-in" data-animate>
-            <div class="avatar">AR</div>
-            <div>
-              <div style="font-weight:800">Ana Ruiz</div>
-              <div class="muted">Especialista en fuerza</div>
-            </div>
-          </div>
-          <div class="trainer fade-in" data-animate>
-            <div class="avatar">JM</div>
-            <div>
-              <div style="font-weight:800">José Martínez</div>
-              <div class="muted">HIIT & Cardio</div>
-            </div>
-          </div>
-          <div class="trainer fade-in" data-animate>
-            <div class="trainer-inner">
-              <div class="avatar">LC</div>
-              <div>
-                <div style="font-weight:800">Lina Cortés</div>
-                <div class="muted">Yoga & Movilidad</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contacto">
-        <h2 style="margin:0 0 12px">Contacto</h2>
-        <div class="card" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-          <div style="flex:1;min-width:240px">
-            <div style="font-size:20px;font-weight:800">Visítanos</div>
-            <div class="muted">Av. Ejemplo 123, Col. Centro — Ciudad</div>
-            <div style="margin-top:8px">Tel: <a href="tel:+521555000000" style="color:var(--accent)">+52 1 55 5000 0000</a></div>
-          </div>
-          <div style="min-width:240px">
-            <form id="contactForm">
-              <input type="text" name="name" placeholder="Nombre" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;margin-bottom:8px">
-              <input type="email" name="email" placeholder="Correo" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;margin-bottom:8px">
-              <textarea name="msg" placeholder="Mensaje" rows="3" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;margin-bottom:8px"></textarea>
-              <button class="cta" type="submit">Enviar</button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      <div>© <span id="year"></span> FitPulse</div>
-      <div class="muted">Hecho con pasión • Política de privacidad</div>
-    </footer>
-
+<div class="container">
+<header>
+  <div class="brand">
+    <div class="logo">FP</div>
+    <div>
+      <div style="font-weight:800">FitPulse</div>
+      <div style="font-size:12px;color:var(--muted)">Gimnasio • Salud • Comunidad</div>
+    </div>
   </div>
+  <i class="fa-solid fa-bars mobile-toggle" id="menuToggle"></i>
+  <nav id="navMenu">
+    <a href="#clases">Clases</a>
+    <a href="#entrenadores">Entrenadores</a>
+    <a href="#planes">Planes</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+    <button class="cta" id="joinBtn">Únete</button>
+  </nav>
+</header>
+</div>
 
-  <div class="float-contact" id="floatContact">Contactar</div>
+<!-- HERO -->
+<div class="container">
+<section class="hero">
+  <div class="hero-card">
+    <h1>Entrena más inteligente.<br>Vive más fuerte.</h1>
+    <p class="lead">Entrenamiento presencial, asesoría en persona y ambiente motivador.</p>
+    <button class="btn-lg" id="startTrial" style="background:var(--accent);color:white">Prueba gratis</button>
+    <button class="btn-lg btn-ghost" id="openModalHorarios">Ver horarios</button>
+  </div>
+  <div class="hero-preview">
+    <div class="overlay"></div>
+    <div class="dumbbells">💪</div>
+  </div>
+</section>
+</div>
 
-  <script>
-    // small helpers
-    const el = s => document.querySelector(s);
-    const els = s => Array.from(document.querySelectorAll(s));
+<!-- MODAL HORARIOS -->
+<div class="modal-bg" id="modalHorarios">
+  <div class="modal fade-in">
+    <h2>Horarios</h2>
+    <table>
+      <tr><td>Lunes - Viernes</td><td>6am - 10pm</td></tr>
+      <tr><td>Sábado</td><td>7am - 4pm</td></tr>
+      <tr><td>Domingo</td><td>Cerrado</td></tr>
+    </table>
+    <button class="cta" id="closeModalHorarios" style="margin-top:14px;">Cerrar</button>
+  </div>
+</div>
 
-    // animate fade-ins on scroll
-    function animateOnScroll(){
-      els('[data-animate]').forEach(node=>{
-        const rect = node.getBoundingClientRect();
-        if(rect.top < (window.innerHeight - 80)) node.classList.add('show');
-      });
-    }
-    window.addEventListener('scroll', animateOnScroll);
-    window.addEventListener('load', ()=>{
-      document.getElementById('year').textContent = new Date().getFullYear();
-      animateOnScroll();
-      startCounters();
-    });
+<!-- CLASES -->
+<section class="container" id="clases">
+  <h2>Nuestras clases</h2>
+  <div class="grid-3">
+    <div class="card"><h3>HIIT</h3><p>Entrenamientos intensos y cortos.</p></div>
+    <div class="card"><h3>Yoga & Stretch</h3><p>Mejora tu movilidad y flexibilidad.</p></div>
+    <div class="card"><h3>Fuerza</h3><p>Gana masa muscular con rutinas guiadas.</p></div>
+  </div>
+</section>
 
-    // counters animation
-    function animateCount(id, to, duration){
-      const el = document.getElementById(id);
-      if(!el) return;
-      let start = 0;
-      const step = Math.ceil(to/(duration/30));
-      const t = setInterval(()=>{
-        start += step;
-        if(start >= to){el.textContent = to;clearInterval(t);} else el.textContent = start;
-      },30);
-    }
-    function startCounters(){
-      animateCount('countMembers', 1280, 1000);
-      animateCount('countClasses', 36, 800);
-      animateCount('countTrainers', 18, 800);
-    }
+<!-- PLANES -->
+<section class="container" id="planes">
+  <h2>Planes</h2>
+  <div class="grid-3">
+    <div class="plan">
+      <h3>Mensual</h3>
+      <div class="price">$500</div>
+      <p>Acceso ilimitado + entrenador personal</p>
+      <button class="cta">Unirse ahora</button>
+    </div>
+    <div class="plan">
+      <h3>Trimestral</h3>
+      <div class="price">$1400</div>
+      <p>Mejor precio + asesoría nutricional</p>
+      <button class="cta">Unirse ahora</button>
+    </div>
+    <div class="plan">
+      <h3>Anual</h3>
+      <div class="price">$5200</div>
+      <p>Ahorra más + regalos exclusivos</p>
+      <button class="cta">Unirse ahora</button>
+    </div>
+  </div>
+</section>
 
-    // CTA interactions // Pagina presencial, sin clases virtuales
-    document.getElementById('joinBtn')?.addEventListener('click', ()=>{
-      window.location.hash = '#contacto';
-      el('input[name=name]')?.focus();
-    });
-    document.getElementById('startTrial')?.addEventListener('click', ()=>{
-      // micro animation
-      const btn = document.getElementById('startTrial');
-      btn.animate([{transform:'scale(1)'},{transform:'scale(0.96)'},{transform:'scale(1)'}],{duration:300});
-      // scroll to plans
-      document.querySelector('#planes')?.scrollIntoView({behavior:'smooth'});
-    });
+<!-- ENTRENADORES -->
+<section class="container" id="entrenadores">
+  <h2>Entrenadores</h2>
+  <div class="trainers">
+    <div class="trainer"><div class="avatar">AR</div><div>Ana Ruiz — Fuerza</div></div>
+    <div class="trainer"><div class="avatar">JM</div><div>José Martínez — HIIT</div></div>
+    <div class="trainer"><div class="avatar">LC</div><div>Lina Cortés — Yoga</div></div>
+  </div>
+</section>
 
-    // floating contact
-    document.getElementById('floatContact').addEventListener('click', ()=>{
-      const phone = '+525510000000';
-      window.open('https://wa.me/'+phone.replace(/\D/g,''),'_blank');
-    });
+<!-- CONTACTO + MAPA -->
+<section class="container" id="contacto">
+  <h2>Contacto</h2>
+  <div class="card" style="padding:24px;">
+    <strong>Visítanos:</strong> Av. Ejemplo 123, Col. Centro, CDMX<br>
+    <strong>Teléfono:</strong> <a href="tel:+521555000000" style="color:var(--accent)">+52 1 55 5000 0000</a>
+    <div id="map"></div>
+  </div>
+</section>
 
-    // form handler (fake)
-    document.getElementById('contactForm').addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.disabled = true; btn.textContent = 'Enviando...';
-      setTimeout(()=>{ btn.textContent = 'Enviado ✅'; },900);
-    });
+<footer>© <span id="year"></span> FitPulse — Hecho con pasión 💪</footer>
 
-    // small accessibility: enable keyboard focus for CTA
-    document.addEventListener('keydown',(e)=>{
-      if(e.key === 'k' && (e.ctrlKey||e.metaKey)){
-        document.querySelector('#startTrial')?.focus();
-      }
-    });
-  </script>
+<!-- WHATSAPP FLOAT -->
+<div class="float-contact" id="floatContact">
+  <i class="fab fa-whatsapp"></i> WhatsApp
+</div>
+
+<script>
+// FECHA
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// MENÚ MOBILE
+document.getElementById('menuToggle').onclick = () => {
+  const nav = document.getElementById('navMenu');
+  nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
+};
+
+// MODAL HORARIOS
+const modal = document.getElementById('modalHorarios');
+document.getElementById('openModalHorarios').onclick =()=> modal.style.display="flex";
+document.getElementById('closeModalHorarios').onclick =()=> modal.style.display="none";
+
+// WHATSAPP
+document.getElementById('floatContact').onclick = () =>{
+  window.open('https://wa.me/525510000000','_blank');
+};
+
+// GOOGLE MAPS
+function initMap(){
+  const location = {lat: 19.432608, lng: -99.133209}; // CDMX ejemplo
+  const map = new google.maps.Map(document.getElementById("map"), {zoom:15, center:location});
+  const marker = new google.maps.Marker({position:location,map:map,title:"FitPulse"});
+}
+</script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script>
 </body>
 </html>
