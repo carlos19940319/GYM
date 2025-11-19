@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -28,6 +29,9 @@ body{
   background: url("IMG/FONDO.png") no-repeat center center fixed;
   background-size: cover;
   color:#e6eef6;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
 }
 body::before{
   content:"";
@@ -43,12 +47,17 @@ a{text-decoration:none;color:inherit;}
 header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;}
 .brand{display:flex;gap:12px;align-items:center;}
 .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;}
-nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+nav{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  flex-wrap:wrap;
+}
 nav a{color:var(--muted);font-weight:600;}
 nav a:hover{color:white;}
 nav a i{font-size:20px;transition:0.3s;}
 nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
-.mobile-toggle{ display:none; font-size:26px; cursor:pointer; }
+.mobile-toggle{ display:none; }
 
 /* BOTONES */
 .cta{
@@ -67,27 +76,39 @@ nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
 .btn-ghost{background:transparent;color:var(--accent-2);border:1px solid rgba(6,182,212,0.12);}
 
 /* HERO */
-.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin:32px 0;}
+.hero{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:28px;
+  align-items:center;
+  margin:32px 0;
+}
 .hero-card{background:var(--glass);border-radius:var(--radius);padding:36px;backdrop-filter:blur(6px);}
-h1{font-size:38px;margin-bottom:10px;}
-p.lead{color:var(--muted);margin-bottom:18px;}
-.hero-preview{height:420px;border-radius:var(--radius);background:linear-gradient(135deg,#071a2a,#061124);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+h1{font-size:clamp(28px,5vw,48px);margin-bottom:10px;}
+p.lead{color:var(--muted);margin-bottom:18px;font-size:clamp(14px,2vw,18px);}
+.hero-preview{
+  width:100%;
+  height:clamp(200px,40vh,420px);
+  border-radius:var(--radius);
+  background:linear-gradient(135deg,#071a2a,#061124);
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+}
 .hero-preview .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.4);}
 .dumbbells{font-size:58px;font-weight:800;opacity:0.1;}
 
 /* CARDS */
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
 .card{background:var(--card);padding:18px;border-radius:12px;}
 .card h3{margin:0 0 6px;}
 .card p{color:var(--muted);margin:0;}
 
 /* ENTRENADORES */
-.trainers{display:flex;gap:14px;}
-.trainer{flex:1;background:var(--glass);padding:12px;border-radius:12px;display:flex;gap:12px;align-items:center;}
+.trainers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+.trainer{background:var(--glass);padding:12px;border-radius:12px;display:flex;gap:12px;align-items:center;}
 .avatar{width:68px;height:68px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;}
 
 /* PLANES */
-.plan{background:var(--card);padding:24px;border-radius:14px;text-align:center;transition:transform 0.3s;}
+.plan{background:var(--card);padding:24px;border-radius:14px;text-align:center;transition:transform 0.3s;width:100%;}
 .plan:hover{transform:scale(1.05);}
 .plan h3{margin-bottom:8px;}
 .plan .price{font-size:28px;font-weight:800;color:var(--accent);margin-bottom:12px;}
@@ -123,11 +144,15 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
   margin-top:12px;
 }
 
-/* responsive */
-@media(max-width:760px){
-  nav{display:none;}
-  .mobile-toggle{display:block;}
+/* RESPONSIVE GENERAL */
+@media(max-width:1024px){
   .hero{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  h1{font-size:28px;}
+  p.lead{font-size:14px;}
+  .cta, .btn-lg{width:100%; text-align:center;}
+  .trainers{grid-template-columns:1fr;}
   .grid-3{grid-template-columns:1fr;}
 }
 </style>
@@ -143,7 +168,6 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
       <div style="font-size:12px;color:var(--muted)">Gimnasio • Salud • Comunidad</div>
     </div>
   </div>
-  <i class="fa-solid fa-bars mobile-toggle" id="menuToggle"></i>
   <nav id="navMenu">
     <a href="#clases">Clases</a>
     <a href="#entrenadores">Entrenadores</a>
@@ -250,12 +274,6 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
 <script>
 // FECHA
 document.getElementById('year').textContent = new Date().getFullYear();
-
-// MENÚ MOBILE
-document.getElementById('menuToggle').onclick = () => {
-  const nav = document.getElementById('navMenu');
-  nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
-};
 
 // MODAL HORARIOS
 const modal = document.getElementById('modalHorarios');
