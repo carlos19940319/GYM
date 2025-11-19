@@ -54,17 +54,13 @@ header{
   left:0;
   width:100%;
   z-index:1000;
-
-  /* Imagen de fondo con opacidad */
   background: linear-gradient(rgba(15,23,36,0.7), rgba(15,23,36,0.7)), 
               url('IMG/TITULO.jpg') no-repeat center center;
   background-size: cover;
-
   padding:14px 28px;
 }
 
 .brand{display:flex;gap:12px;align-items:center;}
-
 .logo{
   width:48px;
   height:48px;
@@ -74,7 +70,6 @@ header{
   justify-content:center;
   overflow:hidden;
 }
-
 .logo img{
   width:100%;
   height:100%;
@@ -115,21 +110,53 @@ nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
   gap:28px;
-  align-items:center;
+  align-items:start;
   margin:32px 0;
 }
 .hero-card{background:var(--glass);border-radius:var(--radius);padding:36px;backdrop-filter:blur(6px);}
 h1{font-size:clamp(28px,5vw,48px);margin-bottom:10px;}
 p.lead{color:var(--muted);margin-bottom:18px;font-size:clamp(14px,2vw,18px);}
-.hero-preview{
-  width:100%;
-  height:clamp(200px,40vh,420px);
-  border-radius:var(--radius);
-  background:linear-gradient(135deg,#071a2a,#061124);
-  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+
+/* HORARIOS HERO */
+.hero-hours{margin-top:24px; background: rgba(255,255,255,0.05); padding:16px; border-radius:12px;}
+.hero-hours h3{color:var(--accent); margin-bottom:12px;}
+
+/* CARRUSEL */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 20px;
 }
-.hero-preview .overlay{position:absolute;inset:0;background:rgba(0,0,0,0.4);}
-.dumbbells{font-size:58px;font-weight:800;opacity:0.1;}
+.slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+.slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 24px;
+  z-index: 2;
+}
+.prev { left: 10px; }
+.next { right: 10px; }
+.prev:hover, .next:hover { background-color: rgba(0,0,0,0.7); }
 
 /* CARDS */
 .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
@@ -182,16 +209,6 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
   transition:0.3s;
 }
 
-/* MODAL HORARIOS */
-.modal-bg{
-  position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;
-}
-.modal{
-  background:var(--card);padding:24px;border-radius:14px;max-width:380px;text-align:center;
-}
-.modal table{width:100%;color:white;margin-top:10px}
-.modal table td{padding:4px 0;}
-
 /* MAPA */
 #map{
   width:100%;
@@ -199,44 +216,6 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
   border-radius:12px;
   margin-top:12px;
 }
-
-/* CARRUSEL */
-.carousel {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  overflow: hidden;
-  border-radius: 20px;
-}
-.slides {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.5s ease-in-out;
-}
-.slide {
-  min-width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-}
-/* Botones carrusel */
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  font-size: 24px;
-  z-index: 2;
-}
-.prev { left: 10px; }
-.next { right: 10px; }
-.prev:hover, .next:hover { background-color: rgba(0,0,0,0.7); }
 
 /* RESPONSIVE GENERAL */
 @media(max-width:1024px){
@@ -285,9 +264,9 @@ section {
     <h1>Optimiza tu entrenamiento.<br>Transforma tu vida.</h1>
     <p class="lead">Clases personalizadas, asesoría profesional y un ambiente motivador que potencia tus resultados.</p>
 
-    <!-- HORARIOS DIRECTOS EN EL HERO -->
-    <div class="hero-hours" style="margin-top:24px; background: rgba(255,255,255,0.05); padding:16px; border-radius:12px;">
-      <h3 style="color:var(--accent); margin-bottom:12px;">Horarios de Atención</h3>
+    <!-- HORARIOS DIRECTOS -->
+    <div class="hero-hours">
+      <h3>Horarios de Atención</h3>
       <table style="width:100%; border-collapse:collapse; color:#e6eef6; font-size:16px;">
         <tr>
           <td style="padding:6px 12px; font-weight:600;">Lunes - Viernes</td>
@@ -305,7 +284,7 @@ section {
     </div>
   </div>
 
-  <!-- Carrusel de imágenes -->
+  <!-- Carrusel -->
   <div class="carousel">
     <div class="slides">
       <div class="slide" style="background-image: url('IMG/FOTO1.jpg');"></div>
@@ -320,7 +299,6 @@ section {
   </div>
 </section>
 </div>
-
 
 <!-- CLASES -->
 <section class="container" id="clases">
@@ -379,7 +357,7 @@ section {
 
 <footer>© <span id="year"></span> SPORTIME — Hecho con pasión 💪</footer>
 
-<!-- ICONOS FLOTANTES: WhatsApp, Instagram, Facebook -->
+<!-- ICONOS FLOTANTES -->
 <div class="float-contact">
   <a href="https://wa.me/525510000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
   <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -389,11 +367,6 @@ section {
 <script>
 // FECHA
 document.getElementById('year').textContent = new Date().getFullYear();
-
-// MODAL HORARIOS
-const modal = document.getElementById('modalHorarios');
-document.getElementById('openModalHorarios').onclick =()=> modal.style.display="flex";
-document.getElementById('closeModalHorarios').onclick =()=> modal.style.display="none";
 
 // GOOGLE MAPS
 function initMap(){
