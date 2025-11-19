@@ -183,29 +183,56 @@ p.lead{color:var(--muted);margin-bottom:12px;font-size:clamp(14px,2vw,18px);}
 .next { right: 10px; }
 .prev:hover, .next:hover { background-color: rgba(0,0,0,0.7); }
 
-/* CARDS */
-.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;}
-.card{
-  background:var(--card);
-  padding:40px;
-  border-radius:20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  color:white;
-  position:relative;
-  overflow:hidden;
+/* CARDS CON EFECTO FLOTANTE Y SOMBRA BLANCA */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
 }
-.card h3{margin:0 0 6px;}
-.card p{color:white;margin:0;}
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.5);
-  z-index:0;
+
+.card {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  
+  /* Efecto flotante */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1); /* sombra blanca suave */
 }
-.card *{position:relative; z-index:1;}
+
+.card:hover {
+  transform: translateY(-10px); /* levanta la card al pasar el mouse */
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2); /* sombra más intensa al flotar */
+}
+
+.card h3 {
+  margin: 0 0 6px;
+}
+
+.card p {
+  color: white;
+  margin: 0;
+}
+
+/* Overlay interno */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.card * {
+  position: relative;
+  z-index: 1;
+}
 
 /* ENTRENADORES */
 .trainers{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;}
@@ -557,4 +584,5 @@ function openFacebook(e){
 </script>
 </body>
 </html>
+
 
