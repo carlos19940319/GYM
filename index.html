@@ -290,7 +290,7 @@ section{scroll-margin-top:90px;}
 <body>
 <!-- PRELOADER AISLADO -->
 <div id="preloader-wrapper">
-  <img src="IMG/FOTO1.jpg" alt="Cargando...">
+  <img src="IMG/FOTO6.png" alt="Cargando...">
 </div>
 
 <style>
@@ -298,24 +298,33 @@ section{scroll-margin-top:90px;}
   #preloader-wrapper {
     position: fixed;
     inset: 0;
-    background: #0f1724;
+    background: #0b1220;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 99999;
   }
 
+/* Evita el efecto verde al tocar botones/enlaces en móviles */
+a, button {
+  -webkit-tap-highlight-color: transparent; /* Chrome, Safari, Opera */
+  -webkit-touch-callout: none;              /* iOS */
+  -webkit-user-select: none;                /* iOS Safari */
+  -ms-touch-action: manipulation;           /* IE/Edge */
+  touch-action: manipulation;               /* General */
+}
+
   #preloader-wrapper img {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
     transform: scale(1);
-    transition: transform 4s ease, opacity 4s ease; /* animación lenta */
+    transition: transform 5s ease, opacity 6s ease; /* animación lenta */
   }
 
   /* Clase que dispara el zoom y desvanecimiento */
   #preloader-wrapper.loaded img {
-    transform: scale(1); /* se achica */
+    transform: scale(0.9); /* se achica */
     opacity: 0;             /* se desvanece */
   }
 </style>
