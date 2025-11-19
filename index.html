@@ -37,7 +37,7 @@ body::before{
   content:"";
   position: fixed;
   inset:0;
-  background:rgba(0,0,0,0.65);
+  background:rgba(0,0,0,0.4);
   z-index:-1;
 }
 a{text-decoration:none;color:inherit;}
@@ -303,19 +303,29 @@ section {
   </div>
 </section>
 </div>
-
 <!-- MODAL HORARIOS -->
 <div class="modal-bg" id="modalHorarios">
   <div class="modal fade-in">
-    <h2>Horarios</h2>
-    <table>
-      <tr><td>Lunes - Viernes</td><td>6am - 10pm</td></tr>
-      <tr><td>Sábado</td><td>7am - 4pm</td></tr>
-      <tr><td>Domingo</td><td>Cerrado</td></tr>
+    <h2 style="margin-bottom:16px; color:var(--accent); font-size:24px;">Horarios de Atención</h2>
+    <table style="width:100%; border-collapse:collapse; font-size:16px; color:#e6eef6;">
+      <tr>
+        <td style="padding:8px 12px; font-weight:600;">Lunes - Viernes</td>
+        <td style="padding:8px 12px;">6:00 AM - 10:00 PM</td>
+      </tr>
+      <tr style="background:rgba(255,255,255,0.05);">
+        <td style="padding:8px 12px; font-weight:600;">Sábado</td>
+        <td style="padding:8px 12px;">7:00 AM - 4:00 PM</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 12px; font-weight:600;">Domingo</td>
+        <td style="padding:8px 12px;">Cerrado</td>
+      </tr>
     </table>
-    <button class="cta" id="closeModalHorarios" style="margin-top:14px;">Cerrar</button>
+    <button class="cta" id="closeModalHorarios" style="margin-top:20px; padding:12px 24px; font-size:16px;">Cerrar</button>
   </div>
 </div>
+
+
 
 <!-- CLASES -->
 <section class="container" id="clases">
