@@ -31,7 +31,7 @@ body{
   min-height:100vh;
   display:flex;
   flex-direction:column;
-  padding-top:90px; /* espacio para header fijo */
+  padding-top:90px;
 }
 body::before{
   content:"";
@@ -116,10 +116,6 @@ nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
 .hero-card{background:var(--glass);border-radius:var(--radius);padding:36px;backdrop-filter:blur(6px);}
 h1{font-size:clamp(28px,5vw,48px);margin-bottom:10px;}
 p.lead{color:var(--muted);margin-bottom:18px;font-size:clamp(14px,2vw,18px);}
-
-/* HORARIOS HERO */
-.hero-hours{margin-top:24px; background: rgba(255,255,255,0.05); padding:16px; border-radius:12px;}
-.hero-hours h3{color:var(--accent); margin-bottom:12px;}
 
 /* CARRUSEL */
 .carousel {
@@ -217,6 +213,12 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
   margin-top:12px;
 }
 
+/* HORARIOS ABAJO */
+#horarios{margin-top:40px;}
+#horarios table{width:100%; max-width:600px; margin:0 auto; border-collapse:collapse; color:#e6eef6; font-size:16px;}
+#horarios table td{padding:6px 12px; font-weight:600;}
+#horarios table tr:nth-child(even){background:rgba(255,255,255,0.05);}
+
 /* RESPONSIVE GENERAL */
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr;}
@@ -229,10 +231,8 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
   .grid-3{grid-template-columns:1fr;}
 }
 
-/* 🔹 CORRECCIÓN HEADER FIJO */
-section {
-  scroll-margin-top: 90px; /* Altura del header */
-}
+/* CORRECCIÓN HEADER FIJO */
+section { scroll-margin-top: 90px; }
 </style>
 </head>
 <body>
@@ -253,6 +253,7 @@ section {
     <a href="#entrenadores">Entrenadores</a>
     <a href="#planes">Planes</a>
     <a href="#contacto">Contacto</a>
+    <a href="#horarios">Horarios</a>
   </nav>
 </header>
 </div>
@@ -263,25 +264,6 @@ section {
   <div class="hero-card">
     <h1>Optimiza tu entrenamiento.<br>Transforma tu vida.</h1>
     <p class="lead">Clases personalizadas, asesoría profesional y un ambiente motivador que potencia tus resultados.</p>
-
-    <!-- HORARIOS DIRECTOS -->
-    <div class="hero-hours">
-      <h3>Horarios de Atención</h3>
-      <table style="width:100%; border-collapse:collapse; color:#e6eef6; font-size:16px;">
-        <tr>
-          <td style="padding:6px 12px; font-weight:600;">Lunes - Viernes</td>
-          <td style="padding:6px 12px;">6:00 AM - 10:00 PM</td>
-        </tr>
-        <tr style="background:rgba(255,255,255,0.05);">
-          <td style="padding:6px 12px; font-weight:600;">Sábado</td>
-          <td style="padding:6px 12px;">7:00 AM - 4:00 PM</td>
-        </tr>
-        <tr>
-          <td style="padding:6px 12px; font-weight:600;">Domingo</td>
-          <td style="padding:6px 12px;">Cerrado</td>
-        </tr>
-      </table>
-    </div>
   </div>
 
   <!-- Carrusel -->
@@ -355,6 +337,25 @@ section {
   </div>
 </section>
 
+<!-- HORARIOS ABAJO -->
+<section class="container" id="horarios">
+  <h2 style="text-align:center; color:var(--accent); margin-bottom:16px;">Horarios de Atención</h2>
+  <table>
+    <tr>
+      <td>Lunes - Viernes</td>
+      <td>6:00 AM - 10:00 PM</td>
+    </tr>
+    <tr>
+      <td>Sábado</td>
+      <td>7:00 AM - 4:00 PM</td>
+    </tr>
+    <tr>
+      <td>Domingo</td>
+      <td>Cerrado</td>
+    </tr>
+  </table>
+</section>
+
 <footer>© <span id="year"></span> SPORTIME — Hecho con pasión 💪</footer>
 
 <!-- ICONOS FLOTANTES -->
@@ -372,7 +373,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 function initMap(){
   const location = {lat: 19.432608, lng: -99.133209};
   const map = new google.maps.Map(document.getElementById("map"), {zoom:15, center:location});
-  const marker = new google.maps.Marker({position:location,map:map,title:"SPORTIME"});
+  new google.maps.Marker({position:location,map:map,title:"SPORTIME"});
 }
 
 // CARRUSEL
