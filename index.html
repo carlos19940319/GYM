@@ -288,9 +288,11 @@ section{scroll-margin-top:90px;}
 </style>
 </head>
 <body>
-<!-- PRELOADER AISLADO -->
+
+
+<!-- PRELOADER PROFESIONAL -->
 <div id="preloader-wrapper">
-  <img src="IMG/FOTO6.png" alt="Cargando...">
+  <img src="IMG/FOTO2.png" alt="Cargando...">
 </div>
 
 <style>
@@ -298,51 +300,63 @@ section{scroll-margin-top:90px;}
   #preloader-wrapper {
     position: fixed;
     inset: 0;
-    background: #0b1220;
+    background: #000000; /* fondo oscuro */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 99999;
+    overflow: hidden;
   }
 
-/* Evita el efecto verde al tocar botones/enlaces en móviles */
-a, button {
-  -webkit-tap-highlight-color: transparent; /* Chrome, Safari, Opera */
-  -webkit-touch-callout: none;              /* iOS */
-  -webkit-user-select: none;                /* iOS Safari */
-  -ms-touch-action: manipulation;           /* IE/Edge */
-  touch-action: manipulation;               /* General */
-}
+  /* Evita efecto verde al tocar botones/enlaces */
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+  }
 
   #preloader-wrapper img {
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
-    transform: scale(1);
-    transition: transform 5s ease, opacity 6s ease; /* animación lenta */
+    object-fit: cover; /* respeta proporción y ocupa toda la pantalla */
+    transform: scale(0.9);
+    opacity: 0;
+    filter: blur(4px);
+    animation: preloaderIntro 6s ease forwards;
   }
 
-  /* Clase que dispara el zoom y desvanecimiento */
-  #preloader-wrapper.loaded img {
-    transform: scale(0.9); /* se achica */
-    opacity: 0;             /* se desvanece */
+  /* Animación profesional manteniendo el fondo completo */
+  @keyframes preloaderIntro {
+    0% {
+      transform: scale(0.9);
+      opacity: 0;
+      filter: blur(8px);
+    }
+    50% {
+      transform: scale(1);
+      opacity: 1;
+      filter: blur(0px);
+    }
+    100% {
+      transform: scale(0.95);
+      opacity: 0;
+      filter: blur(0px);
+    }
   }
 </style>
 
 <script>
-  // Espera a que toda la página cargue
   window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader-wrapper');
-    preloader.classList.add('loaded'); // dispara la animación
 
     // Elimina el preloader después de la animación
     setTimeout(() => {
       preloader.remove();
-    }, 4000); // coincide con la duración de la transición
+    }, 6000); // coincide con la duración de la animación
   });
 </script>
-
-
 
 
 
