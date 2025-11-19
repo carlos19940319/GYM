@@ -63,7 +63,7 @@ header{
 .logo{
   width:48px;
   height:48px;
-  border-radius:12px;
+  border-radius:50px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -313,6 +313,7 @@ section{scroll-margin-top:90px;}
   <div class="hero-card">
     <h1>Optimiza tu entrenamiento.<br>Transforma tu vida.</h1>
     <p class="lead">Clases personalizadas, asesoría profesional y un ambiente motivador que potencia tus resultados.</p>
+    
   
 
     <!-- BOTÓN EXTRA WHATSAPP INDEPENDIENTE -->
@@ -468,25 +469,44 @@ function openRoute(e){
   window.open("https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(destination), "_blank");
 }
 
-// Instagram app/web
-function openInstagram(e){
+<script>
+// --- Función genérica para abrir app con fallback ---
+function openApp(e, urlApp, urlWeb){
   e.preventDefault();
-  const urlApp = "instagram://user?username=sportimea3";
-  window.location = urlApp;
-  setTimeout(()=>{ window.open(urlWeb,"_blank"); }, 500);
+
+  // Creamos un iframe oculto para intentar abrir la app
+  const iframe = document.createElement("iframe");
+  iframe.style.display = "none";
+  iframe.src = urlApp;
+  document.body.appendChild(iframe);
+
+  // Si después de 1 segundo la página sigue visible → la app NO se abrió
+  const start = Date.now();
+  setTimeout(() => {
+    if (Date.now() - start < 1100) {   // La app NO se abrió
+      window.location.href = urlWeb;   // Abrimos la web
+    }
+  }, 1000);
 }
 
-// Facebook app/web
-function openFacebook(e){
-  e.preventDefault();
-  const urlApp = "fb://profile/61572079096195";
-  window.location = urlApp;
-  setTimeout(()=>{ window.open(urlWeb,"_blank"); }, 500);
+// --- Instagram ---
+function openInstagram(e){
+  openApp(e,
+    "instagram://user?username=sportimea3",      // APP
+    "https://www.instagram.com/sportimea3"       // WEB
+  );
 }
+
+// --- Facebook ---
+function openFacebook(e){
+  openApp(e,
+    "fb://profile/61572079096195",               // APP
+    "https://www.facebook.com/profile.php?id=61572079096195"   // WEB
+  );
+}
+</script>
+
 </script>
 
 </body>
 </html>
-
-
-
