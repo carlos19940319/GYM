@@ -267,6 +267,8 @@ section { scroll-margin-top: 90px; }
   <div class="hero-card">
     <h1>Optimiza tu entrenamiento.<br>Transforma tu vida.</h1>
     <p class="lead">Clases personalizadas, asesoría profesional y un ambiente motivador que potencia tus resultados.</p>
+    <!-- Botón Cómo llegar -->
+    <button class="cta" onclick="openRoute(event)">Cómo llegar</button>
   </div>
 
   <!-- Carrusel -->
@@ -335,9 +337,8 @@ section { scroll-margin-top: 90px; }
   <h2>Contacto</h2>
   <div class="card" style="padding:24px;">
     <strong>Visítanos:</strong> V. Los Serranos 147, La Magdalena, San Mateo Atenco<br>
-    <strong>Teléfono:</strong> <a href="tel:+521555000000" style="color:var(--accent)">+52 1 55 5000 0000</a>
-    <br><br>
-    <!-- Botón Cómo llegar -->
+    <strong>Teléfono:</strong> <a href="tel:+5217221383605" style="color:var(--accent)">+52 1 722 138 3605</a><br><br>
+    <!-- Solo botón Cómo llegar -->
     <button class="cta" onclick="openRoute(event)">Cómo llegar</button>
   </div>
 </section>
@@ -365,17 +366,12 @@ section { scroll-margin-top: 90px; }
 
 <!-- ICONOS FLOTANTES -->
 <div class="float-contact">
-  <!-- WhatsApp con mensaje automático -->
-  <a href="https://wa.me/5215512345678?text=Me%20podr%C3%ADa%20agendar%20una%20cita%20para%20conocer%20el%20lugar" target="_blank">
+  <a href="https://wa.me/5217221383605?text=Me%20podr%C3%ADa%20agendar%20una%20cita%20para%20conocer%20el%20lugar" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
-
-  <!-- Instagram app/web -->
   <a href="https://www.instagram.com/sportimea3?igsh=dmIyYTV0MHk2MXdm" target="_blank" onclick="openInstagram(event)">
     <i class="fab fa-instagram"></i>
   </a>
-
-  <!-- Facebook app/web -->
   <a href="https://www.facebook.com/profile.php?id=61572079096195" target="_blank" onclick="openFacebook(event)">
     <i class="fab fa-facebook"></i>
   </a>
@@ -423,9 +419,7 @@ function openInstagram(e) {
     var appUrl = "instagram://user?username=sportimea3";
     window.location = appUrl;
     setTimeout(function(){ window.location = urlWeb; }, 2000);
-  } else {
-    window.open(urlWeb, "_blank");
-  }
+  } else { window.open(urlWeb, "_blank"); }
 }
 
 // Facebook móvil/web
@@ -437,12 +431,10 @@ function openFacebook(e) {
     var appUrl = "fb://profile/61572079096195";
     window.location = appUrl;
     setTimeout(function(){ window.location = urlWeb; }, 2000);
-  } else {
-    window.open(urlWeb, "_blank");
-  }
+  } else { window.open(urlWeb, "_blank"); }
 }
 
-// Cómo llegar con Google Maps
+// Cómo llegar con Google Maps (app o web)
 function openRoute(e) {
   e.preventDefault();
   var destination = "V. Los Serranos 147, La Magdalena, San Mateo Atenco";
@@ -451,7 +443,7 @@ function openRoute(e) {
   if(isMobile){
     var appUrl = "comgooglemaps://?daddr=" + encodeURIComponent(destination) + "&directionsmode=driving";
     window.location = appUrl;
-    setTimeout(function(){ window.location = urlWeb; }, 2000);
+    setTimeout(() => { window.location = urlWeb; }, 2000);
   } else {
     window.open(urlWeb, "_blank");
   }
@@ -460,3 +452,4 @@ function openRoute(e) {
 
 </body>
 </html>
+
