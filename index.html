@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="es">
 <head>
@@ -32,7 +31,7 @@ body{
   min-height:100vh;
   display:flex;
   flex-direction:column;
-  padding-top:90px; /* espacio para header fijo */
+  padding-top:90px;
 }
 body::before{
   content:"";
@@ -48,7 +47,7 @@ a{text-decoration:none;color:inherit;}
 header{
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content: space-between;
   flex-wrap:wrap;
   position:fixed;
   top:0;
@@ -58,7 +57,7 @@ header{
   background: linear-gradient(rgba(15,23,36,0.7), rgba(15,23,36,0.7)), 
               url('IMG/TITULO.jpg') no-repeat center center;
   background-size: cover;
-  padding:14px 28px;
+  padding:14px 20px;
 }
 
 .brand{display:flex;gap:12px;align-items:center;}
@@ -77,38 +76,28 @@ header{
   object-fit:contain;
 }
 
-/* Navegación - siempre horizontal y adaptable */
+/* Navegación - Siempre horizontal, adaptativa */
 nav{
-  display: flex;
-  gap: 12px;             
-  align-items: center;
-  flex-wrap: nowrap;      
-  justify-content: center; 
-  width: 100%;
+  display:flex;
+  gap:16px;
+  align-items:center;
+  flex-wrap:nowrap;
+  justify-content:center;
+  max-width:600px;
+  width:100%;
+  margin-left:20px;
 }
-
 nav a{
-  color: var(--muted);
-  font-weight: 600;
-  text-align: center;
-  flex: 1;                /* cada enlace ocupa espacio proporcional */
-  min-width: 60px;        /* tamaño mínimo de enlace */
+  color:var(--muted);
+  font-weight:600;
+  text-align:center;
+  padding:8px 12px;
+  flex-shrink:0;
+  min-width:60px;
 }
-
-nav a:hover{
-  color: white;
-}
-
-nav a i{
-  font-size: 20px;
-  transition: 0.3s;
-}
-
-nav a i:hover{
-  color: var(--accent-2); 
-  transform: scale(1.2);
-}
-
+nav a:hover{color:white;}
+nav a i{font-size:20px;transition:0.3s;}
+nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
 .mobile-toggle{ display:none; }
 
 /* BOTONES */
