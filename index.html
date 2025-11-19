@@ -31,7 +31,7 @@ body{
   min-height:100vh;
   display:flex;
   flex-direction:column;
-  padding-top:90px;
+  padding-top:90px; /* espacio para header fijo */
 }
 body::before{
   content:"";
@@ -76,14 +76,20 @@ header{
   object-fit:contain;
 }
 
-/* Navegación */
+/* Navegación - Siempre horizontal */
 nav{
   display:flex;
   gap:18px;
   align-items:center;
-  flex-wrap:wrap;
+  flex-wrap: nowrap;         /* No se rompen los enlaces */
+  overflow-x: auto;          /* Scroll horizontal si no caben */
+  white-space: nowrap;        /* Mantener todo en una línea */
 }
-nav a{color:var(--muted);font-weight:600;}
+nav a{
+  color:var(--muted);
+  font-weight:600;
+  flex-shrink: 0;            /* Evita que los enlaces se compriman */
+}
 nav a:hover{color:white;}
 nav a i{font-size:20px;transition:0.3s;}
 nav a i:hover{color:var(--accent-2); transform:scale(1.2);}
