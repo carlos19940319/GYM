@@ -79,21 +79,21 @@ header{
 /* Navegación adaptativa sin scroll */
 nav{
   display: flex;
-  flex-wrap: wrap;          /* Permite que los enlaces se muevan a otra línea si es necesario */
-  gap: 8px;                 /* Espacio entre enlaces */
-  justify-content: center;  /* Centrado horizontal */
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
   width: 100%;
   margin-left: 0;
   padding: 4px 0;
 }
 nav a{
-  white-space: normal;      /* Permite que el texto se divida en varias líneas si es necesario */
+  white-space: normal;
   text-align: center;
   padding: 6px 10px;
   font-weight: 600;
-  font-size: clamp(12px, 2vw, 16px); /* Se ajusta automáticamente al ancho de pantalla */
-  flex: 1 1 auto;           /* Los enlaces se adaptan al espacio disponible */
-  min-width: 0;             /* Evita corte de texto */
+  font-size: clamp(12px, 2vw, 16px);
+  flex: 1 1 auto;
+  min-width: 0;
 }
 nav a:hover{color:white;}
 nav a i{font-size:20px;transition:0.3s;}
@@ -216,14 +216,6 @@ footer{text-align:center;padding:24px;margin-top:50px;color:var(--muted);}
   transition:0.3s;
 }
 
-/* MAPA */
-#map{
-  width:100%;
-  height:300px;
-  border-radius:12px;
-  margin-top:12px;
-}
-
 /* HORARIOS ABAJO */
 #horarios{margin-top:40px;}
 #horarios table{width:100%; max-width:600px; margin:0 auto; border-collapse:collapse; color:#e6eef6; font-size:16px;}
@@ -338,13 +330,15 @@ section { scroll-margin-top: 90px; }
   </div>
 </section>
 
-<!-- CONTACTO + MAPA -->
+<!-- CONTACTO -->
 <section class="container" id="contacto">
   <h2>Contacto</h2>
   <div class="card" style="padding:24px;">
-    <strong>Visítanos:</strong> Av. Ejemplo 123, Col. Centro, CDMX<br>
+    <strong>Visítanos:</strong> V. Los Serranos 147, La Magdalena, San Mateo Atenco<br>
     <strong>Teléfono:</strong> <a href="tel:+521555000000" style="color:var(--accent)">+52 1 55 5000 0000</a>
-    <div id="map"></div>
+    <br><br>
+    <!-- Botón Cómo llegar -->
+    <button class="cta" onclick="openRoute(event)">Cómo llegar</button>
   </div>
 </section>
 
@@ -371,21 +365,25 @@ section { scroll-margin-top: 90px; }
 
 <!-- ICONOS FLOTANTES -->
 <div class="float-contact">
-  <a href="https://wa.me/525510000000" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-  <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+  <!-- WhatsApp con mensaje automático -->
+  <a href="https://wa.me/5215512345678?text=Me%20podr%C3%ADa%20agendar%20una%20cita%20para%20conocer%20el%20lugar" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Instagram app/web -->
+  <a href="https://www.instagram.com/sportimea3?igsh=dmIyYTV0MHk2MXdm" target="_blank" onclick="openInstagram(event)">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <!-- Facebook app/web -->
+  <a href="https://www.facebook.com/profile.php?id=61572079096195" target="_blank" onclick="openFacebook(event)">
+    <i class="fab fa-facebook"></i>
+  </a>
 </div>
 
 <script>
 // FECHA
 document.getElementById('year').textContent = new Date().getFullYear();
-
-// GOOGLE MAPS
-function initMap(){
-  const location = {lat: 19.432608, lng: -99.133209};
-  const map = new google.maps.Map(document.getElementById("map"), {zoom:15, center:location});
-  new google.maps.Marker({position:location,map:map,title:"SPORTIME"});
-}
 
 // CARRUSEL
 document.addEventListener('DOMContentLoaded', () => {
@@ -415,7 +413,50 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(index);
   }, 3000);
 });
+
+// Instagram móvil/web
+function openInstagram(e) {
+  e.preventDefault();
+  var urlWeb = "https://www.instagram.com/sportimea3?igsh=dmIyYTV0MHk2MXdm";
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if(isMobile){
+    var appUrl = "instagram://user?username=sportimea3";
+    window.location = appUrl;
+    setTimeout(function(){ window.location = urlWeb; }, 2000);
+  } else {
+    window.open(urlWeb, "_blank");
+  }
+}
+
+// Facebook móvil/web
+function openFacebook(e) {
+  e.preventDefault();
+  var urlWeb = "https://www.facebook.com/profile.php?id=61572079096195";
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if(isMobile){
+    var appUrl = "fb://profile/61572079096195";
+    window.location = appUrl;
+    setTimeout(function(){ window.location = urlWeb; }, 2000);
+  } else {
+    window.open(urlWeb, "_blank");
+  }
+}
+
+// Cómo llegar con Google Maps
+function openRoute(e) {
+  e.preventDefault();
+  var destination = "V. Los Serranos 147, La Magdalena, San Mateo Atenco";
+  var urlWeb = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(destination);
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if(isMobile){
+    var appUrl = "comgooglemaps://?daddr=" + encodeURIComponent(destination) + "&directionsmode=driving";
+    window.location = appUrl;
+    setTimeout(function(){ window.location = urlWeb; }, 2000);
+  } else {
+    window.open(urlWeb, "_blank");
+  }
+}
 </script>
-<script async src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap"></script>
+
 </body>
 </html>
