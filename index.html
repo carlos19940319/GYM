@@ -53,11 +53,13 @@ header{
   top:0;
   left:0;
   width:100%;
+   border-radius:10px;
   z-index:1000;
   background: linear-gradient(rgba(15,23,36,0.7), rgba(15,23,36,0.7)),
               url('IMG/TITULO.jpg') no-repeat center center;
   background-size: cover;
   padding:8px 12px;
+
 }
 .brand{display:flex;gap:10px;align-items:center;}
 .logo{
@@ -182,7 +184,6 @@ p.lead{color:var(--muted);margin-bottom:12px;font-size:clamp(14px,2vw,18px);}
 .prev { left: 10px; }
 .next { right: 10px; }
 .prev:hover, .next:hover { background-color: rgba(0,0,0,0.7); }
-
 /* CARDS CON EFECTO FLOTANTE Y SOMBRA BLANCA */
 .grid-3 {
   display: grid;
@@ -203,12 +204,12 @@ p.lead{color:var(--muted);margin-bottom:12px;font-size:clamp(14px,2vw,18px);}
   
   /* Efecto flotante */
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1); /* sombra blanca suave */
+  box-shadow: 0 1px 15px rgba(255, 255, 255, 0.8); /* sombra blanca suave */
 }
 
 .card:hover {
   transform: translateY(-10px); /* levanta la card al pasar el mouse */
-  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2); /* sombra más intensa al flotar */
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 1); /* sombra más intensa al flotar */
 }
 
 .card h3 {
@@ -234,6 +235,8 @@ p.lead{color:var(--muted);margin-bottom:12px;font-size:clamp(14px,2vw,18px);}
   z-index: 1;
 }
 
+
+
 /* ENTRENADORES */
 .trainers{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;}
 .trainer{background:var(--glass);padding:10px;border-radius:12px;display:flex;gap:10px;align-items:center;}
@@ -249,13 +252,62 @@ p.lead{color:var(--muted);margin-bottom:12px;font-size:clamp(14px,2vw,18px);}
   background-size: cover;
   background-position: center;
 }
+/* PLANES MODERNOS */
+.plan {
+  background: rgba(15, 23, 36, 0.85); /* efecto glass oscuro */
+  backdrop-filter: blur(10px);       /* desenfoque de fondo */
+  padding: 30px 20px;
+  border-radius: 20px;
+  text-align: center;
+  width: 100%;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.08); /* sombra flotante blanca suave */
+}
 
-/* PLANES */
-.plan{background:var(--card);padding:20px;border-radius:14px;text-align:center;transition:transform 0.3s;width:100%;}
-.plan:hover{transform:scale(1.05);}
-.plan h3{margin-bottom:8px;}
-.plan .price{font-size:24px;font-weight:800;color:var(--accent);margin-bottom:12px;}
-.plan button{margin-top:12px;}
+.plan:hover {
+  transform: translateY(-10px) scale(1.05); /* efecto flotante */
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2); /* sombra más intensa */
+  background: rgba(15, 23, 36, 0.95); /* leve cambio de fondo al hover */
+}
+
+.plan h3 {
+  margin-bottom: 12px;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+  color: white;
+}
+
+.plan .price {
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.plan p {
+  font-size: clamp(14px, 1.8vw, 16px);
+  color: #e6eef6;
+  margin-bottom: 20px;
+}
+
+.plan button {
+  margin-top: 12px;
+  padding: 12px 20px;
+  font-weight: 700;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+}
+
+
 
 /* FOOTER */
 footer{text-align:center;padding:20px;margin-top:50px;color:var(--muted);}
@@ -584,5 +636,3 @@ function openFacebook(e){
 </script>
 </body>
 </html>
-
-
