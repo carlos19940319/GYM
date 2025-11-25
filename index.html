@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SPORTIME-A3 - Gimnasio Profesional</title>
+<meta name="description" content="Landing page moderna para un gimnasio profesional - SPORTIME" />
+
+<!-- ICONOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- FUENTE -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- ESTILO PRINCIPAL -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PRELOADER PROFESIONAL -->
+<div id="preloader-wrapper">
+  <img src="IMG/FOTO2.png" alt="Cargando...">
+</div>
+
+<div class="container">
+<header>
+  <div class="brand">
+    <div class="logo"><img src="IMG/LOGO.png" alt="SPORTIME"></div>
+    <div>
+      <div style="font-weight:800">SPORTIME-A3</div>
+      <div style="font-size:12px;color:var(--muted)">Gimnasio • zumba • Cardio</div>
+    </div>
+  </div>
+  <nav id="navMenu">
+    <a href="#clases">Clases</a>
+    <a href="#entrenadores">Entrenadores</a>
+    <a href="#planes">Planes</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+</div>
+
+<!-- HERO -->
+<div class="container">
+<section class="hero">
+  <div class="hero-card">
+    <h1>Optimiza tu entrenamiento.<br>Transforma tu vida.</h1>
+    <p class="lead">Clases personalizadas, asesoría profesional y un ambiente motivador que potencia tus resultados.</p>
+    <a href="https://wa.me/5217221383605?text=Hola,%20quiero%20informes%20sobre%20las%20clases%20y%20planes" 
+       target="_blank" class="cta" style="margin-top:10px;">Consultá promociones de temporada</a>
+  </div>
+
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide" style="background-image: url('IMG/FOTO1.jpg');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO2.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO3.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO4.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO5.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO6.png');"></div>
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+</section>
+</div>
+
+<!-- CLASES -->
+<section class="container" id="clases">
+  <h2>Nuestras clases</h2>
+  <div class="grid-3">
+    <div class="card" style="background: url('IMG/FOTO2.png') center/cover no-repeat;">
+      <h3>HIIT</h3>
+      <p>Entrenamientos intensos y cortos.</p>
+    </div>
+    <div class="card" style="background: url('IMG/FOTO3.png') center/cover no-repeat;">
+      <h3>Yoga & Stretch</h3>
+      <p>Mejora tu movilidad y flexibilidad.</p>
+    </div>
+    <div class="card" style="background: url('IMG/FOTO4.png') center/cover no-repeat;">
+      <h3>Fuerza</h3>
+      <p>Gana masa muscular con rutinas guiadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="container" id="planes">
+  <h2>Planes</h2>
+  <div class="grid-3">
+    <div class="plan">
+      <h3>Mensual</h3>
+      <div class="price">$500</div>
+      <p>Acceso ilimitado + entrenador personal</p>
+      <button class="cta">Unirse ahora</button>
+    </div>
+    <div class="plan">
+      <h3>Trimestral</h3>
+      <div class="price">$1400</div>
+      <p>Mejor precio + asesoría nutricional</p>
+      <button class="cta">Unirse ahora</button>
+    </div>
+    <div class="plan">
+      <h3>Anual</h3>
+      <div class="price">$5200</div>
+      <p>Ahorra más + regalos exclusivos</p>
+      <button class="cta">Unirse ahora</button>
+    </div>
+  </div>
+</section>
+
+<!-- ENTRENADORES -->
+<section class="container" id="entrenadores">
+  <h2>Entrenadores</h2>
+  <div class="trainers">
+    <div class="trainer">
+      <div class="avatar" style="background-image: url('IMG/FONDO.png');"></div>
+      <div>Carlos Miranda — Fuerza</div>
+    </div>
+    <div class="trainer">
+      <div class="avatar" style="background-image: url('IMG/FONDO.png');"></div>
+      <div>José Martínez — HIIT</div>
+    </div>
+    <div class="trainer">
+      <div class="avatar" style="background-image: url('IMG/FONDO.png');"></div>
+      <div>Lina Cortés — Yoga</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="container" id="contacto">
+  <h2>Contacto</h2>
+  <div class="card" style="padding:24px;">
+    <strong>Visítanos:</strong> AV. Los Serranos 147, La Magdalena, San Mateo Atenco<br>
+    <strong>Teléfono:</strong> <a href="tel:+5217221383605" style="color:var(--accent)">+52 1 722 138 3605</a><br><br>
+    <button class="cta" onclick="openRoute(event)">Cómo llegar</button>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section class="container" id="horarios">
+  <h2 style="text-align:center; color:var(--accent); margin-bottom:16px;">Horarios de servicio</h2>
+  <table>
+    <tr>
+      <td>Lunes - Sabado</td>
+      <td>05:30 AM - 10:00 PM</td>
+    </tr>
+    <tr>
+      <td>Domingo</td>
+      <td>Cerrado</td>
+    </tr>
+  </table>
+</section>
+
+<footer>© <span id="year"></span> SPORTIME — Hecho con pasión 💪</footer>
+
+<!-- ICONOS FLOTANTES -->
+<div class="float-contact">
+  <a href="https://www.google.com/maps/dir/?api=1&destination=AV.%20Los%20Serranos%20147,%20La%20Magdalena,%20San%20Mateo%20Atenco" target="_blank">
+    <i class="fas fa-map-marker-alt"></i>
+  </a>
+  <a href="https://wa.me/5217221383605?text=Hola%20me%20podria%20dar%20mas%20informes%20sobre%20las%20actividades%20del%20GYM" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://www.instagram.com/sportimea3" target="_blank" onclick="openInstagram(event)">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.facebook.com/profile.php?id=61572079096195" target="_blank" onclick="openFacebook(event)">
+    <i class="fab fa-facebook"></i>
+  </a>
+</div>
+
+<!-- SCRIPT PRINCIPAL -->
+<script src="script.js"></script>
+
+</body>
+</html>
