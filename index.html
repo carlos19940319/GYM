@@ -1,652 +1,266 @@
-/*=============================================
-=            VARIABLES Y ROOT                  =
-=============================================*/
-:root {
-  --bg: #0f1724;
-  --card: #0b1220;
-  --accent: #ff5c57;
-  --accent-2: #0b1220;
-  --muted: #94a3b8;
-  --glass: rgba(255, 255, 255, 0.04);
-  --radius: 14px;
-}
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SPORTIME-A3 - Gimnasio Profesional</title>
+<meta name="description" content="Landing page moderna para un gimnasio profesional - SPORTIME" />
 
-/*=============================================
-=             RESET GENERAL                   =
-=============================================*/
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: Inter, sans-serif;
-  background: url("IMG/FONDO.png") no-repeat center center fixed;
-  background-size: cover;
-  color: #e6eef6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-top: 90px;
-}
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  z-index: -1;
-}
-a { text-decoration: none; color: inherit; }
-.container { max-width: 1100px; margin: auto; padding: 14px; }
+<!-- ICONOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- FUENTE -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- ESTILO PRINCIPAL -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PRELOADER PROFESIONAL -->
+<div id="preloader-wrapper">
+  <img src="IMG/FOTO2.png" alt="Cargando...">
+</div>
+
+<div class="container">
+<header>
+  <div class="brand">
+    <div class="logo"><img src="IMG/LOGO.png" alt="SPORTIME"></div>
+    <div>
+      <div style="font-weight:800">SPORTIME-A3</div>
+      <div style="font-size:12px;color:var(--muted)">Gimnasio • zumba • Cardio</div>
+    </div>
+  </div>
+  <nav id="navMenu">
+    <a href="#clases">Clases</a>
+       <a href="#planes">Planes</a>
+    <a href="#entrenadores">Entrenadores</a>
+ 
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+</div>
+
+<!-- HERO -->
+<div class="container">
+<section class="hero">
+  <div class="hero-card">
+    <h1>Optimiza tu entrenamiento.<br>Transforma tu vida.</h1>
+    <p class="lead">Clases personalizadas, asesoría profesional y un ambiente motivador que potencia tus resultados.</p>
+    <a href="https://wa.me/5217221383605?text=Hola,%20quiero%20informes%20sobre%20las%20clases%20y%20planes" 
+       target="_blank" class="cta" style="margin-top:10px;">Consultá promociones de temporada</a>
+  </div>
+
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide" style="background-image: url('IMG/FOTO1.jpg');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO2.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO3.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO4.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO5.png');"></div>
+      <div class="slide" style="background-image: url('IMG/FOTO6.png');"></div>
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
+</section>
+</div>
+
+<!-- CLASES -->
+<section class="container" id="clases">
+  <h2>Nuestras clases</h2>
+  <div class="grid-3">
+    <div class="card" style="background: url('IMG/FOTO2.png') center/cover no-repeat;">
+      <h3>HIIT</h3>
+      <p>Entrenamientos intensos y cortos.</p>
+    </div>
+    <div class="card" style="background: url('IMG/FOTO3.png') center/cover no-repeat;">
+      <h3>Yoga & Stretch</h3>
+      <p>Mejora tu movilidad y flexibilidad.</p>
+    </div>
+    <div class="card" style="background: url('IMG/FOTO4.png') center/cover no-repeat;">
+      <h3>Fuerza</h3>
+      <p>Gana masa muscular con rutinas guiadas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="container" id="planes">
+  <h2>Planes</h2>
+  <div class="grid-3">
+    <div class="plan">
+      <h3>Mensual</h3>
+      <div class="price">$500</div>
+      <p>Acceso ilimitado + entrenador personal</p>
+      <button class="cta">Unirse ahora</button>
+    </div>
+    <div class="plan">
+      <h3>Trimestral</h3>
+      <div class="price">$1400</div>
+      <p>Mejor precio + asesoría nutricional</p>
+      <button class="cta">Unirse ahora</button>
+    </div>
+    <div class="plan">
+      <h3>Anual</h3>
+      <div class="price">$5200</div>
+      <p>Ahorra más + regalos exclusivos</p>
+      <button class="cta">Unirse ahora</button>
+    </div>
+  </div>
+</section>
+
+<!-- ENTRENADORES -->
+<section class="container" id="entrenadores">
+  <h2>Entrenadores</h2>
+  <div class="trainers">
+    <div class="trainer">
+      <div class="avatar" style="background-image: url('IMG/FONDO.png');"></div>
+      <div>Carlos Miranda — Fuerza</div>
+    </div>
+    <div class="trainer">
+      <div class="avatar" style="background-image: url('IMG/FONDO.png');"></div>
+      <div>José Martínez — HIIT</div>
+    </div>
+    <div class="trainer">
+      <div class="avatar" style="background-image: url('IMG/FONDO.png');"></div>
+      <div>Lina Cortés — Yoga</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="container" id="contacto">
+  <h2>Contacto</h2>
+  <div class="card" style="padding:24px;">
+    <strong>Visítanos:</strong> AV. Los Serranos 147, La Magdalena, San Mateo Atenco<br>
+    <strong>Teléfono:</strong> <a href="tel:+5217221383605" style="color:var(--accent)">+52 1 722 138 3605</a><br><br>
+    <button class="cta" onclick="openRoute(event)">Cómo llegar</button>
+  </div>
+</section>
 
 
-/*=============================================
-=               HEADER STICKY MODERNO         =
-=============================================*/
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95%;
-  max-width: 1400px;
-  border-radius: 15px;
-  z-index: 1000;
 
-  /* Fondo combinado: imagen + overlay translúcido */
-  background: linear-gradient(rgba(15,23,36,0.6), rgba(15,23,36,0.6)),
-              url('IMG/TITULO.jpg') no-repeat center center;
-  background-size: cover;
+<!-- ===========================
+      PIE DE PÁGINA / HORARIO
+============================= -->
+<footer style="text-align:center; font-family:Arial,sans-serif; padding:15px 0; margin-top:20px; border-top:1px solid rgba(255,255,255,0.1);">
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  <!-- Horario y Estado -->
+  <div id="horario-compacto" style="font-size:0.9em;">
+    <div id="reloj" style="margin-bottom:4px; font-weight:bold;"></div>
+    <div id="estado" style="margin-bottom:4px; font-weight:bold; display:inline-block; padding:2px 6px; border-radius:4px; transition: all 0.3s;"></div>
+    
+    <h2 id="titulo" style="margin:0 0 4px 0; font-size:1em;">Horario de servicio</h2>
+    <ul id="dias" style="list-style:none; padding:0; margin:0;">
+      <li data-dia="1,2,3,4,5,6" style="padding:1px 0;"><strong>Lunes a Sábado:</strong> 05:30 a 22:00 hrs</li>
+      <li data-dia="0" style="padding:1px 0;"><strong>Domingo:</strong> Cerrado</li>
+    </ul>
+  </div>
 
-  padding: 10px 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: all 0.4s ease;
-}
+  <!-- Derechos -->
+  <p style="margin-top:10px; font-size:0.85em;">
+    © <span id="year"></span> SPORTIME — Hecho con pasión 💪
+  </p>
+</footer>
 
-.brand {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
+<style>
+  .open-anim { animation: zoomEstado 0.5s ease forwards; }
+  @keyframes zoomEstado { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
 
-.logo {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
+  .dia-actual { border-radius:4px; font-weight:bold; padding:0 3px; animation: brillo 1.5s infinite; }
+  @keyframes brillo { 0%,100% { box-shadow: 0 0 3px var(--brillo-color); } 50% { box-shadow: 0 0 8px var(--brillo-color); } }
+</style>
 
-.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.logo img:hover {
-  transform: scale(1.05);
-}
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  flex: 1;
-  margin-left: 20px;
-}
-
-nav a {
-  flex: 1 1 auto;
-  text-align: center;
-  padding: 8px 12px;
-  font-weight: 600;
-  font-size: clamp(13px, 1.5vw, 16px);
-  border: 2px solid rgba(255,255,255,0.25);
-  border-radius: 12px;
-  backdrop-filter: blur(6px);
-  color: #fff;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-nav a::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(0,255,255,0.1));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 12px;
-  z-index: 0;
-}
-
-nav a:hover::before,
-nav a:focus::before {
-  opacity: 1;
-}
-
-nav a:hover,
-nav a:focus {
-  transform: scale(1.08);
-  border-color: rgba(0,255,255,0.6);
-  z-index: 2;
-}
-
-nav a i {
-  font-size: 20px;
-  transition: 0.3s;
-}
-
-nav a i:hover {
-  color: var(--accent-2);
-  transform: scale(1.2);
-}
-
-/* Mobile toggle */
-.mobile-toggle {
-  display: none;
-  cursor: pointer;
-}
-
-/*===============================
-=         Responsive             =
-===============================*/
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    padding: 12px 15px;
-    top: 5px;
+<script>
+  function actualizarReloj() {
+    const reloj = document.getElementById("reloj");
+    const ahora = new Date();
+    let h = ahora.getHours(), m = ahora.getMinutes(), s = ahora.getSeconds();
+    reloj.textContent = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
   }
 
-  nav {
-    width: 100%;
-    justify-content: center;
-    gap: 6px;
+  let ultimoEstado = "";
+
+  function actualizarEstado() {
+    const ahora = new Date();
+    const hoy = ahora.getDay();
+    const estado = document.getElementById("estado");
+    let abierto = false;
+
+    if ([1,2,3,4,5,6].includes(hoy)) {
+      const ahoraMin = ahora.getHours() * 60 + ahora.getMinutes();
+      const apertura = 5 * 60 + 30;
+      const cierre   = 22 * 60;
+      if (ahoraMin >= apertura && ahoraMin <= cierre) abierto = true;
+    }
+
+    if (abierto) {
+      estado.textContent = "🟢 Abierto";
+      estado.style.color = "green";
+      estado.style.boxShadow = "0 0 8px green";
+      if (ultimoEstado !== "abierto") { estado.classList.add("open-anim"); setTimeout(()=>estado.classList.remove("open-anim"),500); }
+      ultimoEstado = "abierto";
+    } else {
+      estado.textContent = "🔴 Cerrado";
+      estado.style.color = "red";
+      estado.style.boxShadow = "0 0 8px red";
+      ultimoEstado = "cerrado";
+    }
   }
 
-  nav a {
-    font-size: clamp(12px, 3vw, 14px);
-    padding: 6px 8px;
+  function resaltarDia(){
+    const dias = document.querySelectorAll("#dias li");
+    const hoy = new Date().getDay();
+    dias.forEach(li => {
+      const diasArray = li.dataset.dia.split(",").map(Number);
+      if (diasArray.includes(hoy)) li.classList.add("dia-actual");
+    });
+    ajustarColores();
+    actualizarEstado();
   }
 
-  .mobile-toggle {
-    display: block;
-  }
-}
+  function ajustarColores() {
+    let bgColor = window.getComputedStyle(document.body).backgroundColor || "rgb(255,255,255)";
+    let rgb = bgColor.match(/\d+/g);
+    let brightness = (parseInt(rgb[0])*299 + parseInt(rgb[1])*587 + parseInt(rgb[2])*114)/1000;
+    let textoColor = brightness > 128 ? "#000" : "#fff";
+    let brilloColor = brightness > 128 ? "rgba(241,196,15,1)" : "rgba(255,255,0,1)";
 
-/*=============================================
-=                 BOTONES                     =
-=============================================*/
-.cta, button {
-  transition: transform 0.3s ease, background 0.3s ease;
-  cursor: pointer;
-}
-.cta:hover, .cta:focus,
-button:hover, button:focus {
-  transform: scale(1.08);
-  z-index: 2;
-}
-.cta {
-  background: linear-gradient(90deg,var(--accent),var(--accent-2));
-  padding: 10px 16px;
-  border-radius: 10px;
-  color: white;
-  font-weight: 700;
-  border: none;
-}
-.btn-lg { padding: 12px 18px; border-radius: 12px; border: none; font-weight: 800; }
-.btn-ghost { background: transparent; color: var(--accent-2); border: 1px solid rgba(6,182,212,0.12); }
-
-/*=============================================
-=                  HERO                        =
-=============================================*/
-.hero {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  align-items: start;
-  margin: 16px 0;
-}
-.hero-card {
-  background: var(--glass);
-  border-radius: var(--radius);
-  padding: 24px;
-  backdrop-filter: blur(6px);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-h1 { font-size: clamp(24px, 5vw, 48px); margin-bottom: 10px; }
-p.lead { color: var(--muted); margin-bottom: 12px; font-size: clamp(14px,2vw,18px); }
-
-/*=============================================
-=                  CARRUSEL                     =
-=============================================*/
-.carousel {
-  position: relative;
-  width: 100%;
-  height: clamp(250px,50vh,500px);
-  overflow: hidden;
-  border-radius: 20px;
-}
-.slides { display: flex; width: 100%; height: 100%; transition: transform 0.5s ease-in-out; }
-.slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; }
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  font-size: 24px;
-  z-index: 2;
-}
-.prev { left: 10px; }
-.next { right: 10px; }
-.prev:hover, .next:hover { background-color: rgba(0,0,0,0.7); }
-
-/*=============================================
-=            CARDS GLASSMORPHISM TÁCTIL      =
-=============================================*/
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-  padding: 20px;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.1); /* vidrio translúcido */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-/* Hover normal en escritorio */
-.card:hover {
-  transform: translateY(-10px) scale(1.04);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-/* Textos */
-.card h3 {
-  margin: 0 0 10px;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.card p {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* Overlay suave */
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.05));
-  z-index: 0;
-  border-radius: 20px;
-}
-
-.card * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Brillo sutil */
-.card::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at top left, rgba(255,255,255,0.2), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.card:hover::after {
-  opacity: 1;
-}
-
-/*=============================================
-=       Activar efecto en dispositivos        =
-=============================================*/
-@media (hover: none) and (pointer: coarse) {
-  /* cuando el dispositivo es táctil */
-  .card:active {
-    transform: translateY(-10px) scale(1.04);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-    background: rgba(255, 255, 255, 0.15);
+    document.querySelector("#titulo").style.color = textoColor;
+    document.querySelector("#reloj").style.color = textoColor;
+    document.querySelectorAll("#dias li").forEach(li => li.style.color = textoColor);
+    document.documentElement.style.setProperty("--brillo-color", brilloColor);
   }
 
-  .card:active::after {
-    opacity: 1;
-  }
-}
+  // Año actual
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Actualización
+  setInterval(()=>{ actualizarReloj(); actualizarEstado(); },1000);
+  window.onload = ()=>{ actualizarReloj(); resaltarDia(); };
+</script>
 
 
-/*=============================================
-=                ENTRENADORES                 =
-=============================================*/
-.trainers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* tarjetas más anchas */
-  gap: 20px;
-  padding: 20px;
-}
+<!-- ICONOS FLOTANTES -->
+<div class="float-contact">
+  <a href="https://www.google.com/maps/dir/?api=1&destination=AV.%20Los%20Serranos%20147,%20La%20Magdalena,%20San%20Mateo%20Atenco" target="_blank">
+    <i class="fas fa-map-marker-alt"></i>
+  </a>
+  <a href="https://wa.me/5217221383605?text=Hola%20me%20podria%20dar%20mas%20informes%20sobre%20las%20actividades%20del%20GYM" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://www.instagram.com/sportimea3" target="_blank" onclick="openInstagram(event)">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.facebook.com/profile.php?id=61572079096195" target="_blank" onclick="openFacebook(event)">
+    <i class="fab fa-facebook"></i>
+  </a>
+</div>
 
-.trainer {
-  background: rgba(255, 255, 255, 0.1); /* vidrio translúcido */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 20px 15px;
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
+<!-- SCRIPT PRINCIPAL -->
+<script src="script.js"></script>
 
-.trainer:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.15);
-}
+</body>
+</html>
 
-.avatar {
-  width: 80px;  /* avatar más grande */
-  height: 80px;
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  background-size: cover;
-  background-position: center;
-  flex-shrink: 0;
-  transition: transform 0.4s ease;
-}
-
-.trainer:hover .avatar {
-  transform: scale(1.08);
-}
-
-/* Textos internos más grandes y elegantes */
-.trainer h4 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #fff;
-}
-
-.trainer p {
-  margin: 4px 0 0;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.3;
-}
-
-/* Overlay sutil de brillo */
-.trainer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.05));
-  z-index: 0;
-  border-radius: 20px;
-}
-
-/* Soporte táctil en móviles */
-@media (hover: none) and (pointer: coarse) {
-  .trainer:active {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.15);
-  }
-}
-
-/*=============================================
-=                 PLANES                       =
-=============================================*/
-
-/* Contenedor de planes responsivo */
-.plans-container {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta el tamaño mínimo y máximo de las columnas */
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* Cada plan */
-.plan {
-  background: rgba(15, 23, 36, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 30px 20px;
-  border-radius: 20px;
-  text-align: center;
-  width: 100%;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
-  box-shadow: 0 10px 25px rgba(255,255,255,0.08);
-}
-
-/* Hover efecto */
-.plan:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 20px 40px rgba(255,255,255,0.2);
-  background: rgba(15, 23, 36, 0.95);
-}
-
-/* Títulos y precios */
-.plan h3 { 
-  margin-bottom: 12px;
-  font-size: clamp(18px,2vw,24px);
-  font-weight: 700;
-  color: white;
-}
-.plan .price {
-  font-size: clamp(22px,3vw,28px);
-  font-weight: 800;
-  color: var(--accent);
-  margin-bottom: 16px;
-}
-.plan p {
-  font-size: clamp(14px,1.8vw,16px);
-  color: #e6eef6;
-  margin-bottom: 20px;
-}
-
-/* Botón */
-.plan button {
-  margin-top: 12px;
-  padding: 12px 20px;
-  font-weight: 700;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  background: linear-gradient(90deg,var(--accent),var(--accent-2));
-  color: white;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.plan button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 15px rgba(255,255,255,0.2);
-}
-
-/* RESPONSIVE ESPECÍFICO */
-@media (max-width: 768px) {
-  .plans-container { 
-    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1200px) {
-  .plans-container { 
-    grid-template-columns: repeat(2, 1fr); /* Dos columnas intermedias */
-  }
-}
-
-@media (min-width: 1201px) {
-  .plans-container { 
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas para pantallas grandes */
-  }
-}
-
-
-/*=============================================
-=                  FOOTER                       =
-=============================================*/
-footer { text-align: center; padding: 20px; margin-top: 50px; color: var(--muted); }
-
-/*=============================================
-=             ICONOS FLOTANTES                 =
-=============================================*/
-.float-contact {
-  position: fixed;
-  right: 12px;
-  bottom: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 1001;
-}
-.float-contact a, .float-contact button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(45deg,var(--accent),var(--accent-2));
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  border: none;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-.float-contact a:hover, .float-contact button:hover { transform: scale(1.1); }
-
-/*=============================================
-=                  HORARIOS                     =
-=============================================*/
-#horarios { margin-top: 32px; }
-#horarios table {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  border-collapse: collapse;
-  color: #e6eef6;
-  font-size: 14px;
-}
-#horarios table td { padding: 6px 10px; font-weight: 600; }
-#horarios table tr:nth-child(even) { background: rgba(255,255,255,0.05); }
-
-/*=============================================
-=                 RESPONSIVE                    =
-=============================================*/
-@media(max-width:1024px){
-  .hero-card { padding: 20px; }
-  nav a { font-size: clamp(12px, 2.5vw, 14px); }
-}
-@media(max-width:480px){
-  header { padding: 6px 8px; }
-  .hero-card { padding: 16px; }
-  nav a { padding: 4px 2px; font-size: 14px; }
-  h1 { font-size: 22px; }
-  p.lead { font-size: 12px; }
-  .trainers { grid-template-columns: 1fr; }
-  .grid-3 { grid-template-columns: 1fr; }
-  .plan .price { font-size: 20px; }
-}
-section { scroll-margin-top: 90px; }
-
-/*=============================================
-=                 PRELOADER                     =
-=============================================*/
-#preloader-wrapper {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-  overflow: hidden;
-}
-#preloader-wrapper img {
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  transform: scale(0.9);
-  opacity: 0;
-  filter: blur(4px);
-  animation: preloaderIntro 6s ease forwards;
-}
-@keyframes preloaderIntro {
-  0% { transform: scale(0.9); opacity: 0; filter: blur(8px); }
-  50% { transform: scale(1); opacity: 1; filter: blur(0); }
-  100% { transform: scale(0.95); opacity: 0; filter: blur(0); }
-}
-/* Quitar efecto de selección verde solo en botones y tarjetas */
-nav a,
-.card,
-.trainer {
-  -webkit-tap-highlight-color: transparent; /* Chrome, Safari, Opera */
-  -moz-tap-highlight-color: transparent;    /* Firefox (algunos casos) */
-  -ms-tap-highlight-color: transparent;     /* IE/Edge antiguos */
-  user-select: none;                        /* evita seleccionar texto accidentalmente */
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-}
-
-
-/* Opcional: también evitar selección de texto al tocar */
-* {
-  user-select: none; /* evita que el texto se seleccione accidentalmente */
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -moz-user-select: none;
-}
