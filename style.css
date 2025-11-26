@@ -629,12 +629,19 @@ section { scroll-margin-top: 90px; }
   50% { transform: scale(1); opacity: 1; filter: blur(0); }
   100% { transform: scale(0.95); opacity: 0; filter: blur(0); }
 }
-/* Elimina el efecto de selección verde en móviles */
-* {
+/* Quitar efecto de selección verde solo en botones y tarjetas */
+nav a,
+.card,
+.trainer {
   -webkit-tap-highlight-color: transparent; /* Chrome, Safari, Opera */
   -moz-tap-highlight-color: transparent;    /* Firefox (algunos casos) */
   -ms-tap-highlight-color: transparent;     /* IE/Edge antiguos */
+  user-select: none;                        /* evita seleccionar texto accidentalmente */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
 }
+
 
 /* Opcional: también evitar selección de texto al tocar */
 * {
