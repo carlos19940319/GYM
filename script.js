@@ -63,3 +63,21 @@ function openApp(e, appUrl, webUrl){
 function openInstagram(e){ openApp(e, "instagram://user?username=sportimea3", "https://www.instagram.com/sportimea3"); }
 function openFacebook(e){ openApp(e, "fb://profile/61572079096195", "https://www.facebook.com/profile.php?id=61572079096195"); }
 
+// ================================
+// TARJETAS SELECCIONABLES (ZOOM CENTRADO)
+// ================================
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    if(card.classList.contains('selected')){
+      // Deseleccionar tarjeta
+      card.classList.remove('selected');
+    } else {
+      // Quitar selección de otras tarjetas
+      cards.forEach(c => c.classList.remove('selected'));
+      // Seleccionar tarjeta clickeada
+      card.classList.add('selected');
+    }
+  });
+});
