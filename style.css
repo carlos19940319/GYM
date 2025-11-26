@@ -40,16 +40,13 @@ a { text-decoration: none; color: inherit; }
 .container { max-width: 1100px; margin: auto; padding: 14px; }
 
 
-/*=============================================
-=               HEADER STICKY MODERNO         =
-=============================================*/
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* CENTRA TODO HORIZONTALMENTE */
   flex-wrap: wrap;
   position: fixed;
-  top: 0px;
+  top: 0; /* pegado arriba */
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
@@ -101,17 +98,15 @@ nav {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  justify-content: center; /* centrado de los botones */
-  flex: 1;
-  margin: 0; /* eliminar margen que rompe la centración */
+  justify-content: center; /* BOTONES CENTRADOS */
+  margin: 10px 0 0 0; /* espacio superior si hay varias líneas */
 }
 
 nav a {
-  flex: 1 1 auto;
   text-align: center;
   padding: 8px 12px;
   font-weight: 600;
-  font-size: clamp(13px, 1.5vw, 16px); /* tamaño responsive */
+  font-size: clamp(13px, 1.5vw, 16px);
   border: 2px solid rgba(255,255,255,0.25);
   border-radius: 12px;
   backdrop-filter: blur(6px);
@@ -159,6 +154,27 @@ nav a i:hover {
 .mobile-toggle {
   display: none;
   cursor: pointer;
+}
+
+/* MEDIA QUERIES PARA RESPONSIVE */
+@media (max-width: 900px) {
+  header {
+    flex-direction: column; /* logo encima de nav */
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column; /* menú vertical en móvil */
+    width: 100%;
+  }
+  nav a {
+    width: 90%;
+    margin: 5px auto;
+  }
+  .mobile-toggle {
+    display: block; /* botón visible en móvil */
+  }
 }
 
 /*===============================
