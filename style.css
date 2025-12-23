@@ -1500,5 +1500,38 @@ button:disabled,
     );
   z-index:2;
 }
+/*=============================================
+=        FIX ZOOM / OCULTO EN MÓVILES          =
+=============================================*/
+@media (max-width:768px){
+
+  /* Quita el zoom en hover */
+  .card:hover{
+    transform:none !important;
+  }
+
+  /* Quita el zoom al seleccionar */
+  .card.selected{
+    position:relative !important;
+    inset:auto !important;
+    transform:none !important;
+    max-width:100% !important;
+  }
+}
 
 
+@media (max-width:768px){
+  .card:hover{
+    transform:none;
+    box-shadow:
+      0 25px 60px rgba(0,0,0,.6),
+      0 0 28px rgba(255,47,47,.35);
+  }
+}
+@media (max-width:768px){
+  .clases .card:hover,
+  .clases .card.selected{
+    transform:none !important;
+    position:relative !important;
+  }
+}
