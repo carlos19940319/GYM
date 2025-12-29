@@ -13,8 +13,8 @@
   /* =========================
      ACENTOS FITNESS
   ========================= */
-  --accent: #ff2f2f;          /* rojo energía gym */
-  --accent-2: #350a06;        /* naranja potencia */
+  --accent: #6bd938;          /* rojo energía gym */
+  --accent-2: #1e8529;        /* naranja potencia */
   --accent-soft: rgba(255,47,47,.18);
 
   /* =========================
@@ -1263,7 +1263,7 @@ button:disabled,
   /* Glass + Gym */
   background:
     radial-gradient(circle at top left, rgba(255,255,255,.25), transparent 60%),
-    linear-gradient(135deg, #ff2f2f, #b80000);
+    linear-gradient(135deg, #722F37, #b80000);
 
   color:#fff;
   font-size:22px;
