@@ -226,22 +226,24 @@ header{
 }
 
 .logo{
-  width:clamp(44px, 5vw, 56px);
-  height:clamp(44px, 5vw, 56px);
-  border-radius:50%;
-  overflow:hidden;
+  width:clamp(65px, 9vw, 80px);
+  height:clamp(65px, 9vw, 70px);
 
-  background:rgba(255,255,255,.08);
-  box-shadow:
-    0 6px 18px rgba(0,0,0,.45),
-    0 0 14px rgba(255,47,47,.25);
+
+  border-radius:0;        /* ❌ sin contorno */
+  background:none;        /* ❌ sin fondo */
+  box-shadow:none;        /* ❌ sin sombra */
+  padding:0;              /* ❌ sin relleno */
+  overflow:visible;       /* ✅ no recorta la imagen */
 }
 
 .logo img{
+  display:block;          /* elimina espacios fantasmas */
   width:100%;
-  height:100%;
-  object-fit:contain;
+  height:auto;            /* 🔑 la imagen manda */
+  object-fit:contain;     /* mantiene proporción */
 }
+
 
 /*=============================================
 =                 NAV                         =
@@ -1690,3 +1692,4 @@ button:focus-visible{
   box-shadow: 0 0 0 2px rgba(255,47,47,.45); /* usa tu accent */
   border-radius: 8px;
 }
+
