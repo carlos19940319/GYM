@@ -357,10 +357,21 @@ nav a:hover i{
 }
 
  /*=============================================
-=        BOTONES GYM PRO 2026 (PREMIUM)        =
+=        BOTONES SPORTIME GYM 2026 (PREMIUM)   =
 =============================================*/
 
-/* SOLO botones intencionales */
+/* ============================================
+   VARIABLES (NARANJA SPORTIME)
+============================================ */
+:root{
+  --accent: #f57c00;     /* naranja principal SPORTIME */
+  --accent-2: #ef6c00;  /* naranja profundo */
+  --accent-soft: rgba(245,124,0,.18);
+}
+
+/* ============================================
+   BASE BOTONES
+============================================ */
 button,
 .cta{
   position:relative;
@@ -371,67 +382,54 @@ button,
   transition:
     transform .35s cubic-bezier(.25,.8,.25,1),
     box-shadow .35s ease,
-    filter .35s ease,
     background .35s ease;
 }
 
-/*=============================================
-=            BOTÓN PRINCIPAL CTA              =
-=============================================*/
+/* ============================================
+   BOTÓN PRINCIPAL CTA
+============================================ */
 .cta{
   padding:14px 28px;
   border-radius:18px;
 
-  background:
-    linear-gradient(
-      135deg,
-      var(--accent),
-      var(--accent-2)
-    );
+  background:linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent-2)
+  );
 
   color:#fff;
   font-weight:900;
   letter-spacing:1px;
 
-  box-shadow:
-    0 12px 28px rgba(0,0,0,.45),
-    0 0 22px rgba(255,47,47,.35);
+  /* sombra limpia, sin glow */
+  box-shadow:0 12px 28px rgba(0,0,0,.45);
 }
 
-/* Brillo energético */
+/* ❌ ELIMINAMOS COMPLETAMENTE EL NEÓN */
 .cta::before{
-  content:'';
-  position:absolute;
-  inset:-4px;
-  border-radius:inherit;
-  background:linear-gradient(90deg, var(--accent), var(--accent-2));
-  filter:blur(14px);
-  opacity:.55;
-  z-index:-1;
+  display:none;
 }
 
-/* Hover / Focus */
+/* Hover / Focus sobrio y premium */
 .cta:hover,
 .cta:focus-visible{
-  transform:translateY(-4px) scale(1.06);
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.65),
-    0 0 38px rgba(255,47,47,.55);
-  filter:brightness(1.1);
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 18px 45px rgba(0,0,0,.65);
 }
 
-/*=============================================
-=              BOTÓN GRANDE                   =
-=============================================*/
+/* ============================================
+   BOTÓN GRANDE
+============================================ */
 .btn-lg{
   padding:18px 34px;
   border-radius:22px;
   font-size:1.05rem;
 }
 
-/*=============================================
-=            BOTÓN SECUNDARIO (GHOST)          =
-=============================================*/
+/* ============================================
+   BOTÓN SECUNDARIO (GHOST SPORTIME)
+============================================ */
 .btn-ghost{
   padding:14px 26px;
   border-radius:18px;
@@ -439,39 +437,50 @@ button,
   background:
     linear-gradient(
       135deg,
-      rgba(255,255,255,.14),
+      rgba(255,255,255,.12),
       rgba(255,255,255,.04)
     );
 
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
 
-  color:var(--accent-2);
+  color:var(--accent);
   font-weight:700;
 
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.15),
+    inset 0 0 0 1px rgba(245,124,0,.45),
     0 10px 24px rgba(0,0,0,.35);
 }
 
-/* Hover ghost */
+/* Hover ghost elegante */
 .btn-ghost:hover,
 .btn-ghost:focus-visible{
-  transform:translateY(-3px);
+  transform:translateY(-2px);
+  background:rgba(245,124,0,.12);
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.25),
+    inset 0 0 0 1px rgba(245,124,0,.65),
     0 16px 38px rgba(0,0,0,.55);
 }
 
-/*=============================================
-=            ESTADOS ESPECIALES                =
-=============================================*/
+/* ============================================
+   ESTADOS ESPECIALES
+============================================ */
 button:disabled,
 .cta:disabled{
   opacity:.45;
   cursor:not-allowed;
   transform:none;
   box-shadow:none;
+}
+
+/* ============================================
+   ACCESIBILIDAD TOUCH
+============================================ */
+@media (hover:none){
+  .cta:hover,
+  .btn-ghost:hover{
+    transform:none;
+  }
 }
 
 /*=============================================
@@ -1236,8 +1245,10 @@ button:disabled,
   footer { text-align: center; padding: 20px; margin-top: 50px; color: var(--muted); }
 
  /*=============================================
-=        ICONOS FLOTANTES GYM PRO 2025         =
+=        ICONOS FLOTANTES SPORTIME GYM 2025    =
 =============================================*/
+
+/* Contenedor */
 .float-contact{
   position:fixed;
   right:16px;
@@ -1249,7 +1260,9 @@ button:disabled,
   font-family:'Inter',system-ui,sans-serif;
 }
 
-/* Botones base */
+/* ============================================
+   BOTONES FLOTANTES (VERDE LOGO SPORTIME)
+============================================ */
 .float-contact a,
 .float-contact button{
   position:relative;
@@ -1260,12 +1273,12 @@ button:disabled,
   align-items:center;
   justify-content:center;
 
-  /* Glass + Gym */
+  /* Verde del logo */
   background:
     radial-gradient(circle at top left, rgba(255,255,255,.25), transparent 60%),
-    linear-gradient(135deg, #722F37, #b80000);
+    linear-gradient(135deg, #8bc34a, #689f38);
 
-  color:#fff;
+  color:#0b1020; /* oscuro para contraste */
   font-size:22px;
   border:none;
   cursor:pointer;
@@ -1274,38 +1287,29 @@ button:disabled,
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
 
-  box-shadow:
-    0 10px 28px rgba(0,0,0,.45),
-    0 0 18px rgba(255,47,47,.35);
+  /* sombra limpia, sin glow rojo */
+  box-shadow:0 10px 28px rgba(0,0,0,.45);
 
   transition:
     transform .35s cubic-bezier(.25,.8,.25,1),
-    box-shadow .35s ease,
-    filter .35s ease;
+    box-shadow .35s ease;
 }
 
-/* Pulso energético */
+/* ============================================
+   ❌ ELIMINAMOS PULSO NEÓN (para que combine)
+============================================ */
 .float-contact a::before,
 .float-contact button::before{
-  content:'';
-  position:absolute;
-  inset:-4px;
-  border-radius:50%;
-  background:rgba(255,47,47,.35);
-  filter:blur(12px);
-  opacity:.55;
-  animation:pulseGym 2.2s infinite ease-in-out;
-  z-index:-1;
+  display:none;
 }
 
-/* Hover poderoso */
+/* ============================================
+   HOVER ELEGANTE / PREMIUM
+============================================ */
 .float-contact a:hover,
 .float-contact button:hover{
-  transform:translateY(-6px) scale(1.12);
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.6),
-    0 0 28px rgba(255,47,47,.55);
-  filter:brightness(1.1);
+  transform:translateY(-4px) scale(1.08);
+  box-shadow:0 18px 45px rgba(0,0,0,.6);
 }
 
 /* Iconos */
@@ -1313,14 +1317,9 @@ button:disabled,
   pointer-events:none;
 }
 
-/* Animación pulso */
-@keyframes pulseGym{
-  0%{transform:scale(.9);opacity:.35}
-  50%{transform:scale(1.05);opacity:.7}
-  100%{transform:scale(.9);opacity:.35}
-}
-
-/* 📱 Móvil */
+/* ============================================
+   📱 MÓVIL
+============================================ */
 @media(max-width:480px){
   .float-contact{
     right:12px;
@@ -1578,5 +1577,19 @@ button,
 button:hover,
 .cta:hover{
   transform:translateY(-3px) scale(1.05);
+}
+
+.sportime-text{
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(22px, 3vw, 32px);
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+
+  color: #f57c00;
+
+  text-shadow:
+    0 2px 0 rgba(0,0,0,.45),
+    0 0 8px rgba(245,124,0,.25);
 }
 
