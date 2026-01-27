@@ -183,7 +183,7 @@ a:focus-visible{
   color:#fff;
 }
 
-  /*=============================================
+/*=============================================
 =        HEADER STICKY GYM PRO 2026            =
 =============================================*/
 
@@ -217,30 +217,37 @@ header{
 }
 
 /*=============================================
-=                BRAND                        =
+=                BRAND (CENTRADO REAL)        =
 =============================================*/
 .brand{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+
   display:flex;
   align-items:center;
   gap:14px;
+
+  z-index:1001;
+  pointer-events:none; /* no bloquea el nav */
 }
 
+/*=============================================
+=                LOGO                         =
+=============================================*/
 .logo{
-  width:clamp(44px, 5vw, 56px);
-  height:clamp(44px, 5vw, 56px);
+  width:clamp(64px, 8vw, 96px);
+  height:clamp(64px, 8vw, 96px);
   border-radius:50%;
   overflow:hidden;
-
-  background:rgba(255,255,255,.08);
-  box-shadow:
-    0 6px 18px rgba(0,0,0,.45),
-    0 0 14px rgba(255,47,47,.25);
 }
 
 .logo img{
   width:100%;
   height:100%;
   object-fit:contain;
+  pointer-events:auto;
 }
 
 /*=============================================
@@ -250,6 +257,7 @@ nav{
   display:flex;
   gap:clamp(8px, 1.5vw, 16px);
   align-items:center;
+  z-index:1000;
 }
 
 /* LINKS — SPORTIME FORMAL */
@@ -266,7 +274,6 @@ nav a{
 
   border-radius:12px;
 
-  /* Fondo sobrio */
   background:rgba(255,255,255,.06);
 
   backdrop-filter:blur(6px);
@@ -324,18 +331,20 @@ nav a:hover i{
 }
 
 /*=============================================
-=           MOBILE TOGGLE (LISTO)              =
-=============================================*/
-.mobile-toggle{
-  display:none;
-}
-
-/*=============================================
-=           MÓVIL REAL                         =
+=           MOBILE REAL                        =
 =============================================*/
 @media (max-width:768px){
   header{
     flex-wrap:wrap;
+  }
+
+  .brand{
+    top:55%;
+  }
+
+  .logo{
+    width:60px;
+    height:60px;
   }
 
   nav{
@@ -359,6 +368,7 @@ nav a:hover i{
     padding:20px 80px;
   }
 }
+
 
  /*=============================================
 =        BOTONES SPORTIME GYM 2026 (PREMIUM)   =
