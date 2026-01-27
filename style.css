@@ -1700,3 +1700,31 @@ button:focus-visible{
   box-shadow: 0 0 0 2px rgba(255,47,47,.45); /* usa tu accent */
   border-radius: 8px;
 }
+/* =============================================
+   FIX LOGO + NAV EN MÓVIL
+============================================= */
+@media (max-width:768px){
+
+  /* Logo vuelve al flujo normal */
+  .brand{
+    position:relative;
+    left:auto;
+    top:auto;
+    transform:none;
+
+    margin:0 auto 8px; /* centra arriba */
+    pointer-events:auto;
+  }
+
+  /* Header ya no se pisa */
+  header{
+    padding-top:12px;
+  }
+
+  /* Nav baja limpio */
+  nav{
+    width:100%;
+    justify-content:space-between;
+  }
+}
+
